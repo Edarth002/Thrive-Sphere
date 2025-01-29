@@ -6,10 +6,10 @@ import { usePathname } from "next/navigation";
 export const Header = () => {
   const pathName = usePathname();
   return (
-    <div className="bg-blue-100">
-      <nav className="flex items-center justify-between py-5 px-14">
+    <div className="bg-blue-50">
+      <nav className="flex items-center justify-between py-5 px-16">
         <div>
-          <h1 className="text-blue-700 text-2xl font-bold ">
+          <h1 className="text-blue-600 text-2xl font-bold ">
             <Link href="/">Thrive sphere</Link>
           </h1>
         </div>
@@ -45,7 +45,7 @@ export const Header = () => {
         </ul>
         <Link
           href="/pages/auth/signup"
-          className="text-white bg-blue-700 hover:bg-blue-900 cursor-pointer duration-300 rounded-full px-4 py-2"
+          className="text-white bg-blue-900 hover:bg-blue-950 cursor-pointer duration-300 rounded-xl px-8 py-3"
         >
           Signup
         </Link>

@@ -7,8 +7,13 @@
 }
 html {
   font-family: var(--font-inter);
+  overflow-x: hidden;
 }
 
-::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Chrome, Safari, Opera */
+.testimonial-scroll {
+  scrollbar-width: none;
+}
+
+.testimonial-scroll::-webkit-scrollbar {
+  display: none;
 }

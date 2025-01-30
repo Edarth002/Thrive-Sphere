@@ -5,7 +5,7 @@ const testimonials = [
       "I wanted to start a business but lacked essential skills like accounting and web design. This app taught me everything i needed to succeed.",
     name: "David Kayode",
     location: "Ogun, Nigeria",
-    avatar: "",
+    avatar: "/assets/avater.jpg",
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const testimonials = [
       "After being laid off, i used this app to learn digital marketing. Within three months. I secured a remote job. it truly changed my life.",
     name: "Chibuzor Ike",
     location: "Enugu Nigeria",
-    avatar: "",
+    avatar: "/assets/avater.jpg",
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const testimonials = [
       "I learned graphic design from the scratch using this app. The step-by-step tutorials and hands-on project helped me land my first freelance gig! ",
     name: "Maria S.",
     location: "London, UK",
-    avatar: "",
+    avatar: "/assets/avater.jpg",
   },
   {
     id: 4,
@@ -29,14 +29,14 @@ const testimonials = [
       "I upskilled in project management and earned a promotion at work thanks to the professional courses on this platform",
     name: "Chidinma E.",
     location: "Lagos, Nigeria",
-    avatar: "",
+    avatar: "/assets/avater.jpg",
   },
   {
     id: 5,
     testimony: "The Courses were practical and focused on real world skills.",
     name: "Samantha Ella",
     location: "Vienna, Austria",
-    avatar: "",
+    avatar: "/assets/avater.jpg",
   },
   {
     id: 6,
@@ -44,7 +44,7 @@ const testimonials = [
       "The quizzes and interactive assignments keep me motivated. It’s not just learning; it’s a whole experience that is fun and rewarding",
     name: "Afonso. A.",
     location: "Lagos, Portugal",
-    avatar: "",
+    avatar: "/assets/avater.jpg",
   },
   {
     id: 7,
@@ -52,7 +52,7 @@ const testimonials = [
       "I was skeptical about online learning, but this experience exceeded all my expectations. I’ve gained new skills, more confidence and a clear path for my future.",
     name: "Mukhtar Abdullahi.",
     location: "Kano, Nigeria",
-    avatar: "",
+    avatar: "/assets/avater.jpg",
   },
   {
     id: 8,
@@ -60,7 +60,7 @@ const testimonials = [
       "I upskilled in project management and earned a promotion at work thanks to the professional courses on this platform",
     name: "Chidinma, E.",
     location: "Lagos, Nigeria",
-    avatar: "",
+    avatar: "/assets/avater.jpg",
   },
 ];
 

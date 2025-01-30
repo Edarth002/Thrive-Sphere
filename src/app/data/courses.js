@@ -5,7 +5,7 @@ const courses = [
     duration: "2 hours",
     tutor: "Olabisi Adeyinka",
     rating: 5,
-    image: "/",
+    image: "/assets/digital marketing.jpg",
     category: "popular",
   },
   {
@@ -41,7 +41,7 @@ const courses = [
     duration: "4 hours",
     tutor: "Ajibode Yewande",
     rating: 5,
-    image: "/",
+    image: "/assets/startup.jpg",
     category: "popular",
   },
   {
@@ -50,7 +50,7 @@ const courses = [
     duration: "4 hours",
     tutor: "Ajibode Yewande",
     rating: 5,
-    image: "/",
+    image: "/assets/public speaking.jpg",
     category: "popular",
   },
   {

@@ -11,7 +11,7 @@ export const PopularCoursesSection = () => {
   }, []);
   return (
     <div className="bg-white px-10 py-20">
-      <h1 className="text-center text-stone-400 text-sm my-2">Our courses</h1>
+      <h1 className="text-center text-stone-400 text-sm mb-2">Our courses</h1>
       <p className="text-blue-600 text-3xl text-center font-bold mb-10">
         Browse our popular courses
       </p>

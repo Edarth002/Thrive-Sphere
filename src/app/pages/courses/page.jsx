@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Courses from "./courses";
 import UniqueCourses from "@/app/components/uniquecourses";
+import Webinarsection from "@/app/components/webinarsection";
 
 export const CoursesPage = () => {
   return (
@@ -45,6 +46,8 @@ export const CoursesPage = () => {
       </section>
 
       <UniqueCourses />
+
+      <Webinarsection />
     </div>
   );
 };

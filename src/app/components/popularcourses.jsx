@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import courses from "../data/courses";
 
-export const PopularCoursesSection = () => {
+export const PopularCourses = () => {
   const [popularCourses, setPopularCourses] = useState([]);
   useEffect(() => {
     const Courses = courses.filter((course) => course.category === "popular");
@@ -37,4 +37,4 @@ export const PopularCoursesSection = () => {
   );
 };
 
-export default PopularCoursesSection;
+export default PopularCourses;

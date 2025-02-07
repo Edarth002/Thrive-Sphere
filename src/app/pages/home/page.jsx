@@ -2,10 +2,11 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "@/app/components/header";
-import PopularCoursesSection from "@/app/components/coursesection";
+
 import Testimonials from "@/app/components/testimonials";
 import OurServices from "@/app/components/ourservices";
 import Footer from "@/app/components/footer";
+import PopularCourses from "@/app/components/popularcourses";
 
 export const HomePage = () => {
   return (
@@ -34,7 +35,7 @@ export const HomePage = () => {
 
       <OurServices />
 
-      <PopularCoursesSection />
+      <PopularCourses />
 
       <Testimonials />
 

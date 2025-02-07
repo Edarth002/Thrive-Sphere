@@ -5,6 +5,7 @@ import Link from "next/link";
 import Courses from "./courses";
 import UniqueCourses from "@/app/components/uniquecourses";
 import Webinarsection from "@/app/components/webinarsection";
+import Footer from "@/app/components/footer";
 
 export const CoursesPage = () => {
   return (
@@ -48,6 +49,8 @@ export const CoursesPage = () => {
       <UniqueCourses />
 
       <Webinarsection />
+
+      <Footer />
     </div>
   );
 };

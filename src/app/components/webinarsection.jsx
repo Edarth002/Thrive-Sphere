@@ -22,7 +22,7 @@ export const Webinarsection = () => {
               height={300}
               className="h-48 object-cover w-full"
             />
-            <p className="text-blue-600 font-semibold text-xl">
+            <p className="text-blue-600 font-semibold text-xl my-2">
               {allwebinars.name}
             </p>
             <div className="my-8 text-stone-500 flex space-x-3 items-center">

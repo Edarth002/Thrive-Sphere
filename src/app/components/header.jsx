@@ -44,7 +44,7 @@ export const Header = () => {
           </Link>
         </ul>
         <Link
-          href="/pages/auth/signup"
+          href="/auth/signup"
           className="text-white bg-blue-900 hover:bg-blue-950 cursor-pointer duration-300 rounded-xl px-8 py-3"
         >
           Signup
@@ -54,14 +54,3 @@ export const Header = () => {
   );
 };
 export default Header;
-
-// function Link({ href, currentpath, children }) {
-//   const isActive = currentpath === href;
-
-//   <li>
-//   Link
-//       href={href}
-//       className={` ${isActive ? "text-blue-700" : "text-stone-400"}`}
-//     Link>
-//   </li>;
-// }

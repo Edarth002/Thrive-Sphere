@@ -25,7 +25,7 @@ export const HomePage = () => {
           </button>
         </section>
         <Image
-          src="/assets/hero.png"
+          src="/assets/hero.jpg"
           width={1000}
           height={1000}
           alt="hero Image"

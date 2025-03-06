@@ -95,7 +95,7 @@ const Community = () => {
           <div className="w-[0.05rem] h-40 bg-stone-300"></div>
           <div>
             <h1 className="font-semibold  pb-2">Payment & Billing</h1>
-            <ul className="text-stone-600 flex flex-col items-start space-y-2 leading-relaxed">
+            <ul className="text-stone-600 flex flex-col items-start space-y-2">
               <li>Payment details</li>
               <li>Refunds</li>
               <li>Subscription details</li>
@@ -104,7 +104,7 @@ const Community = () => {
           <div className="w-[0.05rem] h-40 bg-stone-300"></div>
           <div>
             <h1 className="font-semibold pb-2"> Certificates</h1>
-            <ul className="text-stone-600 flex flex-col items-start space-y-2 leading-relaxed">
+            <ul className="text-stone-600 flex flex-col items-start space-y-2">
               <li>Payment details</li>
               <li>Refunds</li>
               <li>Subscription details</li>
@@ -124,7 +124,7 @@ const Community = () => {
           <p>Email Address</p>
           <div className="bg-black w-10 h-[0.05rem]"></div>
           <p className="my-3">help@info.com</p>
-          <p className="text-stone-500 text-sm">
+          <p className="text-stone-500 text-sm  leading-loose">
             Assistance hours:Monday-Friday <br />
             6am to 8pm
           </p>
@@ -133,7 +133,7 @@ const Community = () => {
           <p>Number</p>
           <div className="bg-black w-10 h-[0.05rem]"></div>
           <p className="my-3">07030459697</p>
-          <p className="text-stone-500 text-sm">
+          <p className="text-stone-500 text-sm leading-loose">
             Assistance hours:Monday-Friday <br />
             6am to 8pm
           </p>

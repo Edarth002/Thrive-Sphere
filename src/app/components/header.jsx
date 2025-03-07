@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
-import React from "react";
-import { usePathname } from "next/navigation";
+// import React from "react";
+// import { usePathname } from "next/navigation";
 
 export const Header = () => {
-  const pathName = usePathname();
+  // const pathName = usePathname();
   return (
     <div className="bg-blue-50">
       <nav className="flex items-center justify-between py-5 px-16">
@@ -16,28 +16,28 @@ export const Header = () => {
         <ul className="flex items-center">
           <Link
             href="/"
-            currentpath={pathName}
+            // currentpath={pathName}
             className="px-10 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
           >
             Home
           </Link>
           <Link
             href="/pages/about"
-            currentpath={pathName}
+            // currentpath={pathName}
             className="px-10 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
           >
             About
           </Link>
           <Link
             href="/pages/courses"
-            currentpath={pathName}
+            // currentpath={pathName}
             className="px-10 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
           >
             Courses
           </Link>
           <Link
             href="/pages/community"
-            currentpath={pathName}
+            // currentpath={pathName}
             className="px-10 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
           >
             Community

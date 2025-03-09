@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import webinars from "../data/webinars";
 import Image from "next/image";
 import Link from "next/link";

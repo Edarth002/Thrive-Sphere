@@ -1,6 +1,6 @@
 import Header from "@/app/components/header";
 import SendEmail from "@/app/components/sendemail";
-import React from "react";
+// import React from "react";
 import Image from "next/image";
 import Footer from "@/app/components/footer";
 

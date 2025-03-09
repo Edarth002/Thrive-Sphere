@@ -97,12 +97,12 @@ const LogIn = () => {
             </div>
 
             <div className="flex w-full space-x-2 justify-center rounded-md bg-[#F1EEEE] px-3 py-4 text-sm/6 font-semibold text-white shadow-xs  focus-visible:outline-2 focus-visible:outline-offset-2 ">
-              <span className="text-black">Already have an account?</span>{" "}
+              <span className="text-black">No account yet?</span>{" "}
               <a
-                href="#"
+                href="/auth/signup"
                 className="font-semibold text-[#153781] hover:text-indigo-500"
               >
-                Login
+                Sign up
               </a>
             </div>
           </div>

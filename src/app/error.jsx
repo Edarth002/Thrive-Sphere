@@ -1,3 +1,4 @@
+"use client";
 const ErrorComponent = ({ message }) => {
   return (
     <div className="flex flex-col items-center justify-center h-full w-full p-4">

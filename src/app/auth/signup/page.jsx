@@ -1,12 +1,44 @@
 "use client";
+import { useState } from "react";
 
 import Footer from "@/app/components/footer";
 import Header from "@/app/components/header";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import signUp from "@/lib/signup";
 
-const Signup = () => {
+const SignUpComponent = () => {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
+  const handleInput = (e) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleForm = async (e) => {
+    console.log("Sanity Token:", process.env.NEXT_PUBLIC_SANITY_API_TOKEN);
+    setError("");
+    setSuccess("");
+    try {
+      e.preventDefault();
+
+      const response = await signUp(form);
+      setSuccess("Account created! Log in to start your learning journey");
+      return response;
+    } catch (error) {
+      setSuccess("");
+      setError("User already created or try again");
+      console.error("Sign up failed");
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -21,33 +53,36 @@ const Signup = () => {
           </div>
 
           <div className="mt-0 sm:mx-auto sm:w-full sm:max-w-md">
-            <form className="space-y-6" action="#" method="POST">
+            <form className="space-y-6" action={handleForm}>
               <div className="grid grid-cols-12 gap-3">
                 <div className="col-span-7 space-y-4">
                   <div>
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="fullName"
-                        id="fullName"
-                        placeholder="Full Name"
-                        autoComplete="fullName"
+                        name="name"
+                        id="name"
+                        value={form.name}
+                        placeholder="Name"
+                        autoComplete="name"
                         required
+                        onChange={handleInput}
                         className="block w-full rounded-md bg-white px-3 py-4 text-base text-gray-900 placeholder:text-gray-400 border-gray-600 border-2 focus:outline-2 focus:outline-indigo-600 focus:ring-2 focus:ring-indigo-500 sm:text-sm"
                       />
                     </div>
                   </div>
 
                   <div>
-                    {/* <label for="email" className="block text-sm/6 font-medium text-gray-900">Email address</label> */}
                     <div className="mt-2">
                       <input
                         type="email"
                         name="email"
                         id="email"
+                        value={form.email}
                         placeholder="Email Address"
                         autoComplete="email"
                         required
+                        onChange={handleInput}
                         className="block w-full rounded-md bg-white px-3 py-4 text-base text-gray-900 placeholder:text-gray-400 border-gray-600 border-2 focus:outline-2 focus:outline-indigo-600 focus:ring-2 focus:ring-indigo-500 sm:text-sm"
                       />
                     </div>
@@ -59,9 +94,11 @@ const Signup = () => {
                         type="password"
                         name="password"
                         id="password"
+                        value={form.password}
                         placeholder="Password"
                         autoComplete="password"
                         required
+                        onChange={handleInput}
                         className="block w-full rounded-md bg-white px-3 py-4 text-base text-gray-900 placeholder:text-gray-400 border-gray-600 border-2 focus:outline-2 focus:outline-indigo-600 focus:ring-2 focus:ring-indigo-500 sm:text-sm"
                       />
                     </div>
@@ -116,6 +153,10 @@ const Signup = () => {
                   SIGN UP
                 </button>
               </div>
+              {error && <p className="text-red-500 my-2 text-sm">{error}</p>}
+              {success && (
+                <p className="text-green-500 my-2 text-sm">{success}</p>
+              )}
             </form>
 
             <div>
@@ -144,4 +185,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignUpComponent;

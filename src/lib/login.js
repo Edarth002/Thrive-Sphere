@@ -19,6 +19,7 @@ export const loginUser = async (email, password) => {
 
     localStorage.setItem("token", data.jwt);
     localStorage.setItem("user", data.user);
+    console.log("Jwt", data.jwt);
 
     return { token: data.jwt, user: data.user };
   } catch (error) {

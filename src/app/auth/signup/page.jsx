@@ -36,7 +36,11 @@ const SignUpComponent = () => {
     }
 
     try {
-      await signUpUser(form.username, form.email, form.password);
+      await signUpUser({
+        username: form.username,
+        email: form.email,
+        password: form.password,
+      });
       setSuccess("Account created! Log in to start your learning journey");
     } catch (err) {
       setError(err.message || "User already exists or try again");
@@ -90,10 +94,10 @@ const SignUpComponent = () => {
                   <input
                     type="password"
                     name="confirm_password"
-                    value={form.confirm_password}
                     placeholder="Confirm Password"
-                    required
+                    value={form.confirm_password}
                     onChange={handleInput}
+                    required
                     className="block w-full rounded-md px-3 py-4 border-2 border-gray-600 focus:ring-2 focus:ring-indigo-500"
                   />
                 </div>
@@ -123,11 +127,13 @@ const SignUpComponent = () => {
                 SIGN UP
               </button>
 
-              {error && <p className="text-red-500 text-sm">{error}</p>}
-              {success && <p className="text-green-500 text-sm">{success}</p>}
+              {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+              {success && (
+                <p className="text-green-500 text-sm mb-2">{success}</p>
+              )}
             </form>
 
-            <div className="flex justify-center bg-[#F1EEEE] px-3 py-4 rounded-md">
+            <div className="flex justify-center bg-[#F1EEEE] px-3 py-4 rounded-md my-3">
               <span className="text-black">Already have an account?</span>{" "}
               <Link
                 href="/auth/login"

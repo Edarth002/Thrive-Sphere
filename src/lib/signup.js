@@ -14,7 +14,7 @@ export const signUpUser = async ({ username, email, password }) => {
     const data = await res.json();
     return data;
   } catch (error) {
-    console.error("Unexplained error: ", error?.message?.data);
-    throw new error();
+    console.error("Unexplained error: ", error?.message);
+    Error(error.message || "Unknown error occurred");
   }
 };

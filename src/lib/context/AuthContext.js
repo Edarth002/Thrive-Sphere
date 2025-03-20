@@ -1,5 +1,6 @@
+"use client";
 import { createContext, useState, useEffect, useContext } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const AuthContext = createContext();
 
@@ -9,13 +10,20 @@ export const AuthProvider = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const storedUser = localStorage.getItem("user");
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("token");
+      const storedUser = localStorage.getItem("user");
 
-    if (token && storedUser) {
-      setUser(JSON.parse(storedUser));
+      if (token && storedUser) {
+        try {
+          setUser(JSON.parse(storedUser));
+        } catch (error) {
+          console.error("Error parsing user data:", error);
+          localStorage.removeItem("user");
+        }
+      }
+      setLoading(false);
     }
-    setLoading(false);
   }, []);
 
   const login = async (email, password) => {
@@ -25,10 +33,7 @@ export const AuthProvider = ({ children }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          identifier: email,
-          password: password,
-        }),
+        body: JSON.stringify({ identifier: email, password }),
       });
 
       const data = await res.json();
@@ -47,11 +52,13 @@ export const AuthProvider = ({ children }) => {
       throw error;
     }
   };
+
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     setUser(null);
-    router.push("/login"); // Redirect after logout
+    router.push("/login");
+    router.refresh();
   };
 
   return (

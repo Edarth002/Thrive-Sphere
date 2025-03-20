@@ -6,12 +6,13 @@ import Header from "@/app/components/header";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { loginUser } from "@/lib/login";
+import { useAuth } from "@/lib/context/AuthContext";
 
 const LogIn = () => {
+  const { login } = useAuth();
   const router = useRouter();
 
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({ username: "", email: "", password: "" });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -28,7 +29,7 @@ const LogIn = () => {
     setSuccess("");
 
     try {
-      await loginUser(form.email, form.password);
+      await login(form.email, form.password);
 
       router.push("/");
       setSuccess(
@@ -47,7 +48,7 @@ const LogIn = () => {
       <div className="py-5 px-16">
         <div className="flex w-full min-h-full flex-col justify-center px-6 py-1 lg:px-0">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-            <h2 className="mt-10 text-center text-2xl font-bold text-gray-900">
+            <h2 className="mt-10 text-center text-2xl font-bold text-gray-900 mb-5">
               Login
             </h2>
           </div>
@@ -56,6 +57,15 @@ const LogIn = () => {
             <form className="space-y-6" onSubmit={handleForm}>
               <div className="grid grid-cols-12 gap-3">
                 <div className="col-span-7 space-y-4 items-center">
+                  <input
+                    type="text"
+                    name="username"
+                    value={form.username}
+                    placeholder="Username"
+                    required
+                    onChange={handleInput}
+                    className="block w-full rounded-md px-3 py-4 border-2 border-gray-600 focus:ring-2 focus:ring-indigo-500"
+                  />
                   <input
                     type="email"
                     name="email"
@@ -89,7 +99,7 @@ const LogIn = () => {
 
               <button
                 type="submit"
-                className="w-full bg-[#153781] py-4 text-white rounded-md font-semibold hover:bg-indigo-500"
+                className="w-full bg-[#153781] py-4 text-white rounded-md font-semibold hover:bg-indigo-950 duration-500"
               >
                 LOGIN
               </button>

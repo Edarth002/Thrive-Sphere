@@ -53,7 +53,7 @@ const SignUpComponent = () => {
       <div className="py-5 px-16">
         <div className="flex w-full min-h-full flex-col justify-center px-6 py-1 lg:px-0">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-            <h2 className="mt-10 text-center text-2xl font-bold text-gray-900">
+            <h2 className="mt-10 text-center text-2xl font-bold text-gray-900 mb-5">
               Sign up and start learning
             </h2>
           </div>
@@ -122,7 +122,7 @@ const SignUpComponent = () => {
 
               <button
                 type="submit"
-                className="w-full bg-[#153781] py-4 text-white rounded-md font-semibold hover:bg-indigo-500"
+                className="w-full bg-[#153781] py-4 text-white rounded-md font-semibold hover:bg-indigo-950 duration-500"
               >
                 SIGN UP
               </button>

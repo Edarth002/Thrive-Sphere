@@ -16,10 +16,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <AuthProvider>
-      <html lang="en">
+    <html lang="en">
+      <AuthProvider>
         <body className={`${inter.variable} antialiased`}>{children}</body>
-      </html>
-    </AuthProvider>
+      </AuthProvider>
+    </html>
   );
 }

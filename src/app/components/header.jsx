@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useAuth } from "@/lib/context/AuthContext";
+import Image from "next/image";
 import { HeadsetIcon } from "lucide-react";
 
 export const Header = () => {
@@ -43,10 +44,16 @@ export const Header = () => {
 
         {user ? (
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 cursor-text">
-              <HeadsetIcon className="w-10 h-10 rounded-full border border-blue-300  p-2" />
+            <Link href="/" className="flex items-center gap-2 cursor-pointer">
+              <Image
+                src="/assets/avater.jpg"
+                alt="Avater"
+                width={50}
+                height={50}
+                className="w-10 h-10 rounded-full border border-blue-300 p-1"
+              />
               <span className="font-medium text-blue-700">{user.username}</span>
-            </div>
+            </Link>
 
             <button
               onClick={logout}

@@ -1,12 +1,11 @@
-// import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "@/app/components/header";
-
 import Testimonials from "@/app/components/testimonials";
 import OurServices from "@/app/components/ourservices";
 import Footer from "@/app/components/footer";
 import PopularCourses from "@/app/components/popularcourses";
+import HeroBtn from "@/app/components/herobtn";
 
 export const HomePage = () => {
   return (
@@ -20,9 +19,7 @@ export const HomePage = () => {
             Your potentials are limitless and we are here to help you achieve
             and realize those potentials towards self improvement and success.
           </p>
-          <button className="bg-yellow-500 rounded-xl duration-500 hover:bg-yellow-600 px-8 py-3 text-white">
-            <Link href="/auth/signup">Sign up</Link>
-          </button>
+          <HeroBtn />
         </section>
         <Image
           src="/assets/hero.jpg"

@@ -3,5 +3,10 @@ export const fetchCourses = async () => {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/courses`
     );
-  } catch (error) {}
+    const data = res.json;
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch courses because: ", error);
+    throw new Error("Failed to fetch courses because: ", error);
+  }
 };

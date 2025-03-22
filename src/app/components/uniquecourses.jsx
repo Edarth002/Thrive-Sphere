@@ -12,7 +12,7 @@ export const UniqueCourses = () => {
   }, []);
   return (
     <div className="bg-white px-10 py-20">
-      <h1 className="text-center text-stone-400 text-sm mb-2 uppercase">
+      <h1 className="text-center text-stone-400 text-lg mb-2 uppercase">
         10+ unique courses
       </h1>
       <p className="text-blue-600 text-3xl text-center font-bold my-2">

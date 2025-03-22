@@ -1,22 +1,40 @@
-// import React from "react";
+"use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import courses from "@/app/data/courses";
+import { fetchCourses } from "@/lib/fetchcourses";
 
 export const Courses = () => {
+  const [courses, setCourses] = useState([]);
+  const [error, setError] = useState("");
+  useEffect(() => {
+    async function FetchCourses() {
+      setError("");
+
+      try {
+        const data = await fetchCourses();
+        setCourses(data);
+        return data;
+      } catch (error) {
+        console.error("Reason for error: ", error);
+        setError(error);
+      }
+      return FetchCourses;
+    }
+  }, []);
   return (
     <div className=" py-16">
-      <p className="text-center text-stone-400 uppercase text-sm mt-3">
+      <p className="text-center text-stone-400 uppercase text-lg mt-3">
         Top class courses
       </p>
       <p className="text-blue-600 text-3xl text-center font-bold py-2">
         Explore our 20+ free online courses
       </p>
-      <p className="text-stone-400 text-sm text-center">
+      <p className="text-stone-400 text-base text-center">
         Take the next step towards achieving your personal and professional
         aspirations with thrive-sphere
       </p>
-
+      {error && <p className="text-xl p-10 text-red-400">{error}</p>}
       <div className="flex items-center flex-wrap p-10 mx-auto justify-center">
         {courses.map((allcourses) => (
           <div

@@ -1,5 +1,5 @@
+"use client";
 import Header from "@/app/components/header";
-// import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Courses from "./courses";
@@ -37,7 +37,7 @@ export const CoursesPage = () => {
       <Courses />
 
       <section className="bg-blue-50 px-10 py-20">
-        <p className="text-center text-stone-400 text-sm mt-3">Confused?</p>
+        <p className="text-center text-stone-400 text-lg mt-3">Confused?</p>
         <p className="text-blue-600 text-3xl text-center font-bold py-2">
           Let us find the right course for you
         </p>

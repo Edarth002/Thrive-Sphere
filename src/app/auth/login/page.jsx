@@ -31,7 +31,7 @@ const LogIn = () => {
     try {
       await login(form.email, form.password);
 
-      router.push("/");
+      router.push("/pages/dashboard");
       setSuccess(
         "Welcome back to thrive-sphere, you would be redirected shortly"
       );

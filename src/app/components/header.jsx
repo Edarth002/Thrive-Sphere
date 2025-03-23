@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { useAuth } from "@/lib/context/AuthContext";
 import Image from "next/image";
-import { HeadsetIcon } from "lucide-react";
 
 export const Header = () => {
   const { user, logout } = useAuth();
@@ -40,6 +39,14 @@ export const Header = () => {
           >
             Community
           </Link>
+          {user && (
+            <Link
+              href="/pages/dashboard"
+              className="px-6 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
+            >
+              Dashboard
+            </Link>
+          )}
         </ul>
 
         {user ? (

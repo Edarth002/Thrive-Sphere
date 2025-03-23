@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("user", JSON.stringify(data.user));
       setUser(data.user);
 
-      router.push("/");
+      router.push("/pages/dashboard");
     } catch (error) {
       console.error("Login error:", error.message);
       throw error;

@@ -22,8 +22,8 @@ export const Dashboard = () => {
   if (!user) return null;
 
   return (
-    <div className="bg-blue-50 h-fit">
-      <Header className="fixed" />
+    <div className="full-page-bg">
+      <Header className="fixed-header" />
       <SideBar />
       <Inbox />
       <HeroDashboard />

@@ -18,8 +18,6 @@ html {
   display: none;
 }
 
-
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -76,8 +74,6 @@ html {
   }
 }
 
-
-
 @layer base {
   * {
     @apply border-border;
@@ -85,4 +81,20 @@ html {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.full-page-bg {
+  background-color: #eff6ff;
+  min-height: 100vh;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background-color: white;
+  z-index: 50;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

@@ -9,7 +9,10 @@ function formatDate(dateString) {
 export const SideBar = () => {
   const { user } = useAuth();
   return (
-    <div className="bg-white bg-opacity-70 backdrop-blur-sm fixed w-60 h-72 rounded-2xl p-7 border border-gray-300 mx-2 mt-5  flex-col flex space-y-5 text-sm">
+    <div
+      className="bg-white bg-opacity-40 backdrop-blur-md fixed w-60 h-72 rounded-2xl p-7 border border-black/30 mx-2 mt-5 flex-col flex space-y-5 text-sm
+"
+    >
       <h2 className="text-stone-700">
         Username: <span className="text-base  text-black">{user.username}</span>
       </h2>

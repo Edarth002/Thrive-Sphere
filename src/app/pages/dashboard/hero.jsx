@@ -5,7 +5,7 @@ import Image from "next/image";
 export const HeroDashboard = () => {
   const { user } = useAuth();
   return (
-    <div className="bg-gradient-to-tr from-blue-500 to-purple-600 rounded-2xl ml-60 m-5 flex items-center justify-between">
+    <div className="bg-gradient-to-tr from-blue-500 to-purple-600 rounded-2xl ml-64 m-5 flex items-center justify-between">
       <div className="text-white p-10">
         <h2 className="text-2xl font-bold">Welcome {user.username}</h2>
         <p className="my-2">

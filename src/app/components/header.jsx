@@ -59,7 +59,9 @@ export const Header = () => {
                 height={50}
                 className="w-10 h-10 rounded-full border border-blue-300 p-1"
               />
-              <span className="font-medium text-blue-700">{user.username}</span>
+              <span className="font-medium text-blue-700">
+                Hi, {user.username}
+              </span>
             </Link>
 
             <button

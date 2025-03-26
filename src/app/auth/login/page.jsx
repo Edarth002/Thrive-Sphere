@@ -12,19 +12,19 @@ const LogIn = () => {
       <div className="py-5 px-16">
         {/* <h1 className='text-[64px] font-[bold]'>Sign up and start learning </h1> */}
 
-        <div className="flex w-full min-h-full flex-col justify-center px-6 py-1 lg:px-0">
-          <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
-            <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+        <div class="flex w-full min-h-full flex-col justify-center px-6 py-1 lg:px-0">
+          <div class="sm:mx-auto sm:w-full sm:max-w-sm ">
+            <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
               Sign up and start learning
             </h2>
           </div>
 
-          <div className="mt-0 sm:mx-auto sm:w-full sm:max-w-md">
-            <form className="space-y-6" action="#" method="POST">
+          <div class="mt-0 sm:mx-auto sm:w-full sm:max-w-md">
+            <form class="space-y-6" action="#" method="POST">
               <div className="grid grid-cols-12 gap-3">
                 <div className="col-span-7 space-y-4">
                   <div>
-                    <div className="mt-2">
+                    <div class="mt-2">
                       <input
                         type="email"
                         name="email"
@@ -38,7 +38,7 @@ const LogIn = () => {
                   </div>
 
                   <div>
-                    <div className="mt-2">
+                    <div class="mt-2">
                       <input
                         type="password"
                         name="password"
@@ -64,7 +64,7 @@ const LogIn = () => {
               </div>
 
               <div>
-                <div className="mt-2">
+                <div class="mt-2">
                   <input
                     type="checkbox"
                     id="checkbox"
@@ -81,7 +81,7 @@ const LogIn = () => {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-[#153781] px-3 py-4 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  class="flex w-full justify-center rounded-md bg-[#153781] px-3 py-4 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   SIGN UP
                 </button>
@@ -96,13 +96,13 @@ const LogIn = () => {
               </p>
             </div>
 
-            <div className="flex w-full space-x-2 justify-center rounded-md bg-[#F1EEEE] px-3 py-4 text-sm/6 font-semibold text-white shadow-xs  focus-visible:outline-2 focus-visible:outline-offset-2 ">
-              <span className="text-black">No account yet?</span>{" "}
+            <div class="flex w-full space-x-2 justify-center rounded-md bg-[#F1EEEE] px-3 py-4 text-sm/6 font-semibold text-white shadow-xs  focus-visible:outline-2 focus-visible:outline-offset-2 ">
+              <span className="text-black">Already have an account?</span>{" "}
               <a
-                href="/auth/signup"
-                className="font-semibold text-[#153781] hover:text-indigo-500"
+                href="#"
+                class="font-semibold text-[#153781] hover:text-indigo-500"
               >
-                Sign up
+                Login
               </a>
             </div>
           </div>

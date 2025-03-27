@@ -37,8 +37,6 @@ const HomePage = () => {
         </div>
       </ImageOverlay>
 
-      {/* Additional Content Below */}
-
       <MissionSection />
       <Instructors />
       <JoinInstructor />

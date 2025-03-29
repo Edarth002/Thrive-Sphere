@@ -8,29 +8,29 @@ export const Footer = () => {
         <p className="text-2xl">Thrive sphere</p>
         <ul className="flex flex-col items-start space-y-5">
           <li>
-            <Link href="/">Services</Link>
+            <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="/">Features</Link>
+            <Link href="/pages/courses">Courses</Link>
           </li>
           <li>
-            <Link href="/">About us</Link>
-          </li>
-        </ul>
-        <ul className="flex flex-col items-start space-y-5">
-          <li>
-            <Link href="/">Community</Link>
-          </li>
-          <li>
-            <Link href="/">Volunteer</Link>
-          </li>
-          <li>
-            <Link href="/">Help</Link>
+            <Link href="/pages/about">About us</Link>
           </li>
         </ul>
         <ul className="flex flex-col items-start space-y-5">
           <li>
-            <Link href="/">Contact us</Link>
+            <Link href="/pages/community">Community</Link>
+          </li>
+          <li>
+            <Link href="/pages/community">Volunteer</Link>
+          </li>
+          <li>
+            <Link href="/pages/community">Help</Link>
+          </li>
+        </ul>
+        <ul className="flex flex-col items-start space-y-5">
+          <li>
+            <Link href="/pages/community">Contact us</Link>
           </li>
           <li>
             <Link href="/">email: support@thrivesphere.com</Link>

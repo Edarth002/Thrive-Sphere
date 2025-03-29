@@ -2,27 +2,20 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import courses from "../data/courses";
+import courses from "@/app/data/courses";
 
-export const UniqueCourses = () => {
+export const Activecourses = () => {
   const [uniqueCourses, setuniqueCourses] = useState([]);
   useEffect(() => {
     const Courses = courses.filter((course) => course.category === "unique");
     setuniqueCourses(Courses);
   }, []);
   return (
-    <div className="bg-white px-10 py-20">
-      <h1 className="text-center text-stone-400 text-lg mb-2 uppercase">
-        10+ unique courses
+    <div className="ml-64">
+      <h1 className="text-center text-stone-800 text-lg mb-2 uppercase">
+        Active courses
       </h1>
-      <p className="text-blue-600 text-3xl text-center font-bold my-2">
-        You may also like more courses
-      </p>
-      <p className="text-center text-stone-400 text-sm ">
-        Take the next step towards achieving your personal and professional
-        aspirations with thrive-sphere
-      </p>
-      <div className="flex items-center mx-auto w-full justify-center my-10">
+      <div className="flex items-center mx-auto w-full justify-center my-5">
         {uniqueCourses.map((uniquecourses) => (
           <div
             key={uniquecourses.id}
@@ -95,4 +88,4 @@ export const UniqueCourses = () => {
   );
 };
 
-export default UniqueCourses;
+export default Activecourses;

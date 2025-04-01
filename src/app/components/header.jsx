@@ -8,7 +8,7 @@ import Image from "next/image";
 export const Header = ({ className }) => {
   const pathname = usePathname(); // ✅ Get the current route
 
-  const isAboutPage = pathName === "/pages/about";
+  const isAboutPage = pathname === "/pages/about";
   const backgroundColor =
     pathname === "/"
       ? "bg-blue-50"

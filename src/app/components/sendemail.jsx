@@ -1,6 +1,34 @@
-// import React from "react";
+"use client";
+
+import { sendEmail } from "@/lib/email";
+import { useState, useEffect } from "react";
 
 export const SendEmail = () => {
+  const [mail, setMail] = useState({
+    to: "",
+    subject: "",
+    message: "",
+  });
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
+  const handleInput = (e) => {
+    setMail((prev) => ({ ...prev, [e.target.message]: e.target.value }));
+  };
+
+  const handleEmail = async (e) => {
+    e.target.preventDefault();
+    setError("");
+    setSuccess("");
+
+    try {
+      const mail = await sendEmail(mail);
+      setSuccess("Email sent Successfully");
+    } catch (error) {
+      setError("Email not sent, contact thrivesphere@gmail.com");
+    }
+  };
+
   return (
     <div className="bg-blue-800 p-10 text-white w-full h-[70vh]">
       <p>Get Started</p>

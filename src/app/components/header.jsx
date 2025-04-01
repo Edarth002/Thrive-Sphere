@@ -1,12 +1,11 @@
 "use client";
 import Link from "next/link";
 
-// import React from "react";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/lib/context/AuthContext";
+import Image from "next/image";
 
 export const Header = ({ className }) => {
-  const pathName = usePathname();
-
   const pathname = usePathname(); // ✅ Get the current route
 
   const isAboutPage = pathName === "/pages/about";
@@ -19,13 +18,7 @@ export const Header = ({ className }) => {
       ? "bg-blue-50"
       : "bg-blue-50";
 
-=======
-import { useAuth } from "@/lib/context/AuthContext";
-import Image from "next/image";
-
-export const Header = () => {
   const { user, logout } = useAuth();
-
 
   return (
     <div
@@ -40,51 +33,40 @@ export const Header = () => {
         <ul className="flex items-center">
           <Link
             href="/"
-
             className={`px-10 hover:text-blue-700 cursor-pointer duration-300 ${
               isAboutPage ? "text-white" : "text-stone-500"
             }`}
-=======
-            className="px-6 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
-
+            // className="px-6 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
           >
             Home
           </Link>
           <Link
             href="/pages/about"
-
             // currentpath={pathName}
             className={`px-10 hover:text-blue-700 cursor-pointer duration-300 ${
               isAboutPage ? "text-white" : "text-stone-500"
             }`}
-=======
-            className="px-6 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
-
+            // className="px-6 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
           >
             About
           </Link>
           <Link
             href="/pages/courses"
-
             // currentpath={pathName}
             className={`px-10 hover:text-blue-700 cursor-pointer duration-300 ${
               isAboutPage ? "text-white" : "text-stone-500"
             }`}
-=======
-            className="px-6 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
-
+            // className="px-6 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
           >
             Courses
           </Link>
           <Link
             href="/pages/community"
-
             // currentpath={pathName}
             className={`px-10 hover:text-blue-700 cursor-pointer duration-300 ${
               isAboutPage ? "text-white" : "text-stone-500"
             }`}
-=======
-            className="px-6 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
+            // className="px-6 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
           >
             Community
           </Link>

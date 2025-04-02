@@ -11,10 +11,17 @@ export async function sendEmail({ to, subject, message }) {
       }
     );
 
-    const result = response.json();
+    if (!response.ok) {
+      throw new Error(
+        `Failed to send email: ${response.status} ${response.statusText}`
+      );
+    }
+
+    const result = await response.json();
     return result;
   } catch (error) {
-    console.error(error, "Error sending email");
+    console.error("Error sending email", error);
+    throw new Error("Error sending email");
 
     return { error: "Error sending Email" };
   }

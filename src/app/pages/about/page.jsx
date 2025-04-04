@@ -6,8 +6,7 @@ import JoinInstructor from "@/app/components/joininstructor";
 import MissionSection from "@/app/components/missionsection";
 import Image from "next/image";
 import Link from "next/link";
-// import ImageOverlay from "@/components/ImageOverlay";
-// import imageBg from "../about-us.png";
+import HeroBtn from "@/app/components/herobtn";
 
 const HomePage = () => {
   return (
@@ -31,9 +30,11 @@ const HomePage = () => {
             accessible, flexible, and engaging. Explore our platform and unlock
             your potentials today with Thrive Sphere and succeed.
           </p>
-          <button className="mt-6 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-8 py-3 rounded-xl gap-2">
+          {/* <button className="mt-6 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-8 py-3 rounded-xl gap-2">
             Sign Up <span>➜</span>
-          </button>
+          </button> */}
+
+          <HeroBtn />
         </div>
       </ImageOverlay>
 

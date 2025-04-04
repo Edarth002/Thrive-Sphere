@@ -23,7 +23,11 @@ export const SendEmail = () => {
     setSuccess("");
 
     try {
-      const response = await sendEmail(mail.to, mail.subject, mail.message);
+      const response = await sendEmail({
+        to: mail.to,
+        subject: mail.subject,
+        message: mail.message,
+      });
 
       setSuccess("Email sent Successfully");
       setMail({ from: "", to: "", subject: "", message: "" });

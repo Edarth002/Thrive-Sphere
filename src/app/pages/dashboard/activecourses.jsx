@@ -15,7 +15,7 @@ export const Activecourses = () => {
       <h1 className="text-center text-stone-800 text-lg mb-2 uppercase">
         Active courses
       </h1>
-      <div className="flex items-center mx-auto w-full justify-center my-5">
+      <div className="flex items-center mx-auto w-full justify-center my-5 bg-blue-50 pb-10 mb-0">
         {uniqueCourses.map((uniquecourses) => (
           <div
             key={uniquecourses.id}

@@ -85,7 +85,7 @@ html {
 
 .full-page-bg {
   background-color: #eff6ff;
-  min-height: 100vh;
+  height: 100%;
 }
 
 .fixed-header {

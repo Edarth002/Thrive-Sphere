@@ -8,19 +8,21 @@ export const Courses = () => {
   const [courses, setCourses] = useState([]);
   const [error, setError] = useState("");
   useEffect(() => {
-    async function FetchCourses() {
+    async function fetchCoursesFunction() {
       setError("");
 
       try {
-        const data = await fetchCourses();
-        setCourses(data);
-        return data;
+        const res = await fetchCourses();
+        console.log(res.data);
+
+        setCourses(res.data);
+        return res.data;
       } catch (error) {
         console.error("Reason for error: ", error);
         setError(error);
       }
-      return FetchCourses();
     }
+    fetchCoursesFunction();
   }, []);
   return (
     <div className=" py-16">
@@ -35,7 +37,7 @@ export const Courses = () => {
         aspirations with thrive-sphere
       </p>
       {error && <p className="text-xl p-10 text-red-400">{error}</p>}
-      <div className="flex items-center flex-wrap p-10 mx-auto justify-center">
+      <div className="flex items-start flex-wrap p-10 mx-auto justify-center w-full">
         {courses.map((allcourses) => (
           <div
             key={allcourses.id}
@@ -43,7 +45,7 @@ export const Courses = () => {
           >
             <Image
               src={allcourses.image}
-              alt={allcourses.name}
+              alt={allcourses.Title}
               width={300}
               height={300}
               className="h-48 object-cover w-full"
@@ -57,7 +59,10 @@ export const Courses = () => {
                   height={50}
                   className="p-1 rounded-full bg-yellow-200 invert w-7 h-7"
                 />
-                <p className="font-semibold">{`${allcourses.users} Learners`}</p>
+                <p className="font-semibold">
+                  {`${allcourses.learners}`}
+                  <span className="font-light ml-1">Learners</span>
+                </p>
               </div>
               <div className="flex space-x-3 items-center">
                 <Image
@@ -67,13 +72,16 @@ export const Courses = () => {
                   height={50}
                   className="p-1 rounded-full bg-yellow-200 invert w-7 h-7"
                 />
-                <p className="font-semibold">{allcourses.duration}</p>
+                <p className="font-semibold flex">
+                  {allcourses.duration}{" "}
+                  <span className="font-light ml-1">mins</span>
+                </p>
               </div>
             </div>
-            <h1 className="text-blue-600 text-xl my-5">{allcourses.name}</h1>
+            <h1 className="text-blue-600 text-xl my-5">{allcourses.Title}</h1>
             <p>{allcourses.tutor}</p>
             <div className="flex space-x-2 items-center">
-              <p className="text-stone-400 my-1">{allcourses.rating}</p>
+              <p className="text-stone-400 my-1">{allcourses.learners}</p>
               <Image
                 src="/assets/star.png"
                 alt="Star icon"

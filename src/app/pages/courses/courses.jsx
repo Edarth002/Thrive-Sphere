@@ -43,13 +43,15 @@ export const Courses = () => {
             key={allcourses.id}
             className="border-stone-300 border-2 p-5  rounded-sm relative h-[28rem] w-[calc(33.33%-1.25rem)] m-1"
           >
-            <Image
-              src={allcourses.image}
+            <img
+              src={`http://localhost:1337${
+                allcourses.thumbnail.formats.medium?.url ||
+                allcourses.thumbnail.url
+              }`}
               alt={allcourses.Title}
-              width={300}
-              height={300}
               className="h-48 object-cover w-full"
             />
+
             <div className=" flex space-x-5 my-3">
               <div className="flex space-x-3 items-center">
                 <Image

@@ -3,6 +3,7 @@ import SendEmail from "@/app/components/sendemail";
 // import React from "react";
 import Image from "next/image";
 import Footer from "@/app/components/footer";
+import Link from "next/link";
 
 const Community = () => {
   return (
@@ -77,28 +78,51 @@ const Community = () => {
           <div>
             <h1 className="font-semibold pb-2">Account Management</h1>
             <ul className="text-stone-600 flex flex-col items-start space-y-2">
-              <li>Create Account</li>
-              <li>Edit Account</li>
-              <li>Delete Account</li>
+              <li>
+                <Link href="/auth/signup">Create Account</Link>
+              </li>
+              <li>
+                <Link href="/auth/login">Login to Account</Link>
+              </li>
+              <li>
+                <Link href="/pages/dashboard">Delete Account</Link>
+              </li>
             </ul>
           </div>
           <div className="w-[0.05rem] h-40 bg-stone-300"></div>
           <div>
             <h1 className="font-semibold pb-2">Information and Training</h1>
             <ul className="text-stone-600 flex flex-col items-start space-y-2">
-              <li>Onboarding</li>
-              <li>Courses</li>
-              <li>Handbook</li>
-              <li>News</li>
+              <li>
+                <Link href="/pages/onboarding">Onboarding</Link>
+              </li>
+              <li>
+                <Link href="/pages/courses">Courses</Link>
+              </li>
+              <li>
+                <Link href="/pages/handbook">Handbook</Link>
+              </li>
+              <li>
+                <Link href="/pages/news">News</Link>
+              </li>
             </ul>
           </div>
           <div className="w-[0.05rem] h-40 bg-stone-300"></div>
           <div>
             <h1 className="font-semibold  pb-2">Payment & Billing</h1>
             <ul className="text-stone-600 flex flex-col items-start space-y-2">
-              <li>Payment details</li>
-              <li>Refunds</li>
-              <li>Subscription details</li>
+              <li>
+                {" "}
+                <Link href="/">Pricing Plans</Link>
+              </li>
+              <li>
+                {" "}
+                <Link href="/">Payment Page</Link>
+              </li>
+              <li>
+                {" "}
+                <Link href="/">Payment Status</Link>
+              </li>
             </ul>
           </div>
           <div className="w-[0.05rem] h-40 bg-stone-300"></div>
@@ -106,7 +130,7 @@ const Community = () => {
             <h1 className="font-semibold pb-2">
               {" "}
               Certificates{" "}
-              <span className="font-normal bg-blue-600 text-white px-2 text-sm py-1 rounded-xl">
+              <span className="font-normal bg-blue-700 text-white px-2 ml-1 text-sm py-1 rounded-xl">
                 Beta
               </span>
             </h1>

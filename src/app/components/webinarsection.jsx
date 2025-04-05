@@ -7,6 +7,7 @@ import { fetchWebinars } from "@/lib/fetchwebinars";
 export const Webinarsection = () => {
   const [showForm, setShowForm] = useState(false);
   const [subject, setSubject] = useState("");
+  const [date, setDate] = useState("");
   const [webinars, setWebinars] = useState([]);
   const [error, setError] = useState("");
   useEffect(() => {
@@ -27,7 +28,8 @@ export const Webinarsection = () => {
     fetchWebinarsFunction();
   }, []);
 
-  const handleOpenForm = (courseTitle) => {
+  const handleOpenForm = (courseTitle, date) => {
+    setSubject(date);
     setSubject(courseTitle);
     setShowForm(true);
   };
@@ -65,7 +67,9 @@ export const Webinarsection = () => {
               </p>
             </div>
             <button
-              onClick={() => handleOpenForm(allwebinars.Title)}
+              onClick={() =>
+                handleOpenForm(allwebinars.Title, allwebinars.Date)
+              }
               className="bg-yellow-500 rounded-xl duration-500 hover:bg-yellow-600
             px-8 py-3 text-white "
             >
@@ -77,6 +81,7 @@ export const Webinarsection = () => {
       {showForm && (
         <RegisterForWebinar
           subject={subject}
+          date={date}
           onClose={() => setShowForm(false)}
         />
       )}

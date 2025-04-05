@@ -19,7 +19,7 @@ export const Courses = () => {
         console.error("Reason for error: ", error);
         setError(error);
       }
-      return FetchCourses;
+      return FetchCourses();
     }
   }, []);
   return (

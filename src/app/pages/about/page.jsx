@@ -4,8 +4,6 @@ import ImageOverlay from "@/app/components/imageoverlay";
 import Instructors from "@/app/components/instructors";
 import JoinInstructor from "@/app/components/joininstructor";
 import MissionSection from "@/app/components/missionsection";
-import Image from "next/image";
-import Link from "next/link";
 import HeroBtn from "@/app/components/herobtn";
 
 const HomePage = () => {

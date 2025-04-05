@@ -80,7 +80,12 @@ export const Header = ({ className }) => {
 
         {user ? (
           <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center gap-2 cursor-pointer">
+            <Link
+              href="/pages/dashboard"
+              className={`px-10 hover:text-blue-700 duration-300 flex items-center gap-2 cursor-pointer ${
+                isAboutPage ? "text-white" : "text-stone-500"
+              }`}
+            >
               <Image
                 src="/assets/avater.jpg"
                 alt="Avater"
@@ -88,9 +93,7 @@ export const Header = ({ className }) => {
                 height={50}
                 className="w-10 h-10 rounded-full border border-blue-300 p-1"
               />
-              <span className="font-medium text-blue-700">
-                Hi, {user.username}
-              </span>
+              <span className="font-medium">Hi, {user.username}</span>
             </Link>
 
             <button

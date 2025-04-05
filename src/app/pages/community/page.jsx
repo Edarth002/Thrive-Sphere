@@ -103,7 +103,13 @@ const Community = () => {
           </div>
           <div className="w-[0.05rem] h-40 bg-stone-300"></div>
           <div>
-            <h1 className="font-semibold pb-2"> Certificates</h1>
+            <h1 className="font-semibold pb-2">
+              {" "}
+              Certificates{" "}
+              <span className="font-normal bg-blue-600 text-white px-2 text-sm py-1 rounded-xl">
+                Beta
+              </span>
+            </h1>
             <ul className="text-stone-600 flex flex-col items-start space-y-2">
               <li>Payment details</li>
               <li>Refunds</li>

@@ -21,13 +21,16 @@ const RegisterForWebinar = ({ subject, onClose }) => {
 
     try {
       // Send to Strapi webinar list
-      await fetch("http://localhost:1337/api/webinar-attendant", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ data: dataToSend }),
-      });
+      await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/webinar-attendants`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ data: dataToSend }),
+        }
+      );
 
       // Send email to register for event
       await sendEmail(dataToSend);
@@ -45,8 +48,12 @@ const RegisterForWebinar = ({ subject, onClose }) => {
         onSubmit={handleSubmit}
         className="bg-white p-6 rounded shadow-md w-96"
       >
-        <h2 className="text-lg font-bold mb-2">
-          Register for {subject} Webinar
+        <h2 className=" font-bold mb-2">
+          Register for{" "}
+          <span className="text-lg font-bold text-blue-600 mb-2">
+            {subject}
+          </span>{" "}
+          Webinar
         </h2>
         <input
           name="message"

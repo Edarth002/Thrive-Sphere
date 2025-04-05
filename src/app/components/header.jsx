@@ -36,7 +36,6 @@ export const Header = ({ className }) => {
             className={`px-10 hover:text-blue-700 cursor-pointer duration-300 ${
               isAboutPage ? "text-white" : "text-stone-500"
             }`}
-            // className="px-6 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
           >
             Home
           </Link>
@@ -46,7 +45,6 @@ export const Header = ({ className }) => {
             className={`px-10 hover:text-blue-700 cursor-pointer duration-300 ${
               isAboutPage ? "text-white" : "text-stone-500"
             }`}
-            // className="px-6 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
           >
             About
           </Link>
@@ -56,7 +54,6 @@ export const Header = ({ className }) => {
             className={`px-10 hover:text-blue-700 cursor-pointer duration-300 ${
               isAboutPage ? "text-white" : "text-stone-500"
             }`}
-            // className="px-6 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
           >
             Courses
           </Link>
@@ -66,14 +63,15 @@ export const Header = ({ className }) => {
             className={`px-10 hover:text-blue-700 cursor-pointer duration-300 ${
               isAboutPage ? "text-white" : "text-stone-500"
             }`}
-            // className="px-6 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
           >
             Community
           </Link>
           {user && (
             <Link
               href="/pages/dashboard"
-              className="px-6 text-stone-500 hover:text-blue-700 cursor-pointer duration-300"
+              className={`px-10 hover:text-blue-700 cursor-pointer duration-300 ${
+                isAboutPage ? "text-white" : "text-stone-500"
+              }`}
             >
               Dashboard
             </Link>

@@ -64,7 +64,6 @@ export const Activecourses = () => {
                   />
                 </div>
               </div>
-              <p className="">#{uniquecourses.price}</p>
             </section>
 
             <div className="absolute bottom-0 flex items-center w-full left-0">

@@ -40,7 +40,7 @@ export const Courses = () => {
       <div className="flex items-start flex-wrap p-10 mx-auto justify-center w-full">
         {courses.map((allcourses) => (
           <div
-            key={allcourses.id}
+            key={allcourses.documentId}
             className="border-stone-300 border-2 p-5  rounded-sm relative h-[28rem] w-[calc(33.33%-1.25rem)] m-1"
           >
             <img
@@ -94,13 +94,13 @@ export const Courses = () => {
 
             <div className="absolute bottom-0 flex items-center w-full left-0">
               <Link
-                href={`/courses/${allcourses.id}`}
+                href={`/courses/${allcourses.documentId}`}
                 className="border p-1 text-stone-500 text-center w-1/2"
               >
                 View Course
               </Link>
               <Link
-                href={`/courses/${allcourses.id}`}
+                href={`/courses/${allcourses.documentId}`}
                 className="border p-1 text-stone-500 text-center w-1/2"
               >
                 Start Learning

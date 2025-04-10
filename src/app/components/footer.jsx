@@ -11,26 +11,26 @@ export const Footer = () => {
             <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="/pages/courses">Courses</Link>
+            <Link href="/courses">Courses</Link>
           </li>
           <li>
-            <Link href="/pages/about">About us</Link>
-          </li>
-        </ul>
-        <ul className="flex flex-col items-start space-y-5">
-          <li>
-            <Link href="/pages/community">Community</Link>
-          </li>
-          <li>
-            <Link href="/pages/community">Volunteer</Link>
-          </li>
-          <li>
-            <Link href="/pages/community">Help</Link>
+            <Link href="/about">About us</Link>
           </li>
         </ul>
         <ul className="flex flex-col items-start space-y-5">
           <li>
-            <Link href="/pages/community">Contact us</Link>
+            <Link href="/community">Community</Link>
+          </li>
+          <li>
+            <Link href="/community">Volunteer</Link>
+          </li>
+          <li>
+            <Link href="/community">Help</Link>
+          </li>
+        </ul>
+        <ul className="flex flex-col items-start space-y-5">
+          <li>
+            <Link href="/community">Contact us</Link>
           </li>
           <li>
             <Link href="/">email: support@thrivesphere.com</Link>

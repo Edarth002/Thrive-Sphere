@@ -33,7 +33,7 @@ const LogIn = () => {
       setSuccess(
         "Welcome back to Thrive Sphere, you will be redirected shortly."
       );
-      router.push("/pages/dashboard");
+      router.push("/dashboard");
     } catch (err) {
       setError("Invalid credentials. Please try again.");
     }

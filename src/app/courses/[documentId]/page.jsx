@@ -2,20 +2,22 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/context/AuthContext";
-import Link from "next/link";
+import { use } from "react"; // Importing use()
 
 export default function CoursePage({ params }) {
   const { user } = useAuth();
   const router = useRouter();
-  const { documentId } = params;
+
+  // Unwrap the params using use() hook
+  const { documentId } = use(params); // Unwrapping params here
 
   const [course, setCourse] = useState(null);
   const [lessons, setLessons] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!user) router.push("/login");
-  }, [user, router]);
+    if (!user) router.push("/auth/login");
+  }, []);
 
   useEffect(() => {
     async function fetchCourseAndLessons() {
@@ -51,7 +53,7 @@ export default function CoursePage({ params }) {
       <p className="text-stone-600 mb-6">{course.description}</p>
 
       <h2 className="text-xl font-semibold text-stone-700 mb-3">Lessons:</h2>
-      <ul className="space-y-3">
+      {/* <ul className="space-y-3">
         {lessons.map((lesson) => (
           <li
             key={lesson.id}
@@ -65,7 +67,7 @@ export default function CoursePage({ params }) {
             </Link>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 }

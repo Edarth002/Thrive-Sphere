@@ -29,7 +29,7 @@ export const CoursesPage = () => {
             build self awareness, refine your skills
           </p>
           <button className="bg-yellow-500 rounded-xl duration-500 hover:bg-yellow-600 px-8 py-3 text-white">
-            <Link href="/pages/auth/signup">Explore all courses</Link>
+            <Link href="/auth/signup">Explore all courses</Link>
           </button>
         </section>
       </div>
@@ -42,7 +42,7 @@ export const CoursesPage = () => {
           Let us find the right course for you
         </p>
         <button className="bg-yellow-500 rounded-xl duration-500 hover:bg-yellow-600 px-8 py-3 text-white justify-center mx-auto flex my-5">
-          <Link href="/pages/auth/signup">Get Recommendations</Link>
+          <Link href="/auth/signup">Get Recommendations</Link>
         </button>
       </section>
 

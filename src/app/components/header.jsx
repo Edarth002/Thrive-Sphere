@@ -8,7 +8,7 @@ import Image from "next/image";
 export const Header = ({ className }) => {
   const pathname = usePathname(); // ✅ Get the current route
 
-  const isAboutPage = pathname === "/pages/about";
+  const isAboutPage = pathname === "/about";
   const backgroundColor =
     pathname === "/"
       ? "bg-blue-50"
@@ -40,7 +40,7 @@ export const Header = ({ className }) => {
             Home
           </Link>
           <Link
-            href="/pages/about"
+            href="/about"
             // currentpath={pathName}
             className={`px-10 hover:text-blue-700 cursor-pointer duration-300 ${
               isAboutPage ? "text-white" : "text-stone-500"
@@ -49,7 +49,7 @@ export const Header = ({ className }) => {
             About
           </Link>
           <Link
-            href="/pages/courses"
+            href="/courses"
             // currentpath={pathName}
             className={`px-10 hover:text-blue-700 cursor-pointer duration-300 ${
               isAboutPage ? "text-white" : "text-stone-500"
@@ -58,7 +58,7 @@ export const Header = ({ className }) => {
             Courses
           </Link>
           <Link
-            href="/pages/community"
+            href="/community"
             // currentpath={pathName}
             className={`px-10 hover:text-blue-700 cursor-pointer duration-300 ${
               isAboutPage ? "text-white" : "text-stone-500"
@@ -68,7 +68,7 @@ export const Header = ({ className }) => {
           </Link>
           {user && (
             <Link
-              href="/pages/dashboard"
+              href="/dashboard"
               className={`px-10 hover:text-blue-700 cursor-pointer duration-300 ${
                 isAboutPage ? "text-white" : "text-stone-500"
               }`}
@@ -81,7 +81,7 @@ export const Header = ({ className }) => {
         {user ? (
           <div className="flex items-center gap-4">
             <Link
-              href="/pages/dashboard"
+              href="/dashboard"
               className={`px-10 hover:text-blue-700 duration-300 flex items-center gap-2 cursor-pointer ${
                 isAboutPage ? "text-white" : "text-stone-500"
               }`}

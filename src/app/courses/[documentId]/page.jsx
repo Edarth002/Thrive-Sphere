@@ -7,7 +7,8 @@ import Link from "next/link";
 export default function CoursePage({ params }) {
   const { user } = useAuth();
   const router = useRouter();
-  const { id } = params;
+  const { documentId } = params;
+
   const [course, setCourse] = useState(null);
   const [lessons, setLessons] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,13 +21,13 @@ export default function CoursePage({ params }) {
     async function fetchCourseAndLessons() {
       try {
         const courseRes = await fetch(
-          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/courses/${id}`
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/courses/document/${documentId}`
         );
         const courseJson = await courseRes.json();
         setCourse(courseJson.data);
 
         const lessonsRes = await fetch(
-          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/lessons?filters[course][id][$eq]=${id}`
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/lessons?filters[course][documentId][$eq]=${documentId}`
         );
         const lessonsJson = await lessonsRes.json();
         setLessons(lessonsJson.data);
@@ -38,7 +39,7 @@ export default function CoursePage({ params }) {
     }
 
     if (user) fetchCourseAndLessons();
-  }, [id, user]);
+  }, [documentId, user]);
 
   if (loading) return <p className="p-10 text-center">Loading...</p>;
   if (!course)
@@ -47,13 +48,13 @@ export default function CoursePage({ params }) {
   return (
     <div className="max-w-3xl mx-auto py-10 px-4">
       <h1 className="text-3xl font-bold text-blue-600 mb-4">{course.Title}</h1>
-      <p className="text-stone-600 mb-6">{course.Description}</p>
+      <p className="text-stone-600 mb-6">{course.description}</p>
 
       <h2 className="text-xl font-semibold text-stone-700 mb-3">Lessons:</h2>
       <ul className="space-y-3">
         {lessons.map((lesson) => (
           <li
-            key={documentId}
+            key={lesson.id}
             className="p-4 border rounded hover:bg-gray-50 transition"
           >
             <Link

@@ -94,13 +94,13 @@ export const Courses = () => {
 
             <div className="absolute bottom-0 flex items-center w-full left-0">
               <Link
-                href={`/courses/${allcourses.id}`}
+                href={`/courses/${allcourses.documentId}`}
                 className="border p-1 text-stone-500 text-center w-1/2"
               >
                 View Course
               </Link>
               <Link
-                href={`/courses/${allcourses.id}`}
+                href={`/courses/${allcourses.documentId}`}
                 className="border p-1 text-stone-500 text-center w-1/2"
               >
                 Start Learning

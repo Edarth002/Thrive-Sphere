@@ -85,7 +85,7 @@ const Community = () => {
                 <Link href="/auth/login">Login to Account</Link>
               </li>
               <li>
-                <Link href="/pages/dashboard">Delete Account</Link>
+                <Link href="/dashboard">Delete Account</Link>
               </li>
             </ul>
           </div>
@@ -94,16 +94,16 @@ const Community = () => {
             <h1 className="font-semibold pb-2">Information and Training</h1>
             <ul className="text-stone-600 flex flex-col items-start space-y-2">
               <li>
-                <Link href="/pages/onboarding">Onboarding</Link>
+                <Link href="/onboarding">Onboarding</Link>
               </li>
               <li>
-                <Link href="/pages/courses">Courses</Link>
+                <Link href="/courses">Courses</Link>
               </li>
               <li>
-                <Link href="/pages/handbook">Handbook</Link>
+                <Link href="/handbook">Handbook</Link>
               </li>
               <li>
-                <Link href="/pages/news">News</Link>
+                <Link href="/news">News</Link>
               </li>
             </ul>
           </div>

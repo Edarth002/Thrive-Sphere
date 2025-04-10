@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function CoursePage({ params }) {
   const { user } = useAuth();
   const router = useRouter();
-  const { documentId } = params;
+  const { id } = params;
   const [course, setCourse] = useState(null);
   const [lessons, setLessons] = useState([]);
   const [loading, setLoading] = useState(true);

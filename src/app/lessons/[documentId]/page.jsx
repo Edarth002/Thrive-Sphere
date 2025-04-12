@@ -1,50 +1,81 @@
-import { notFound } from "next/navigation";
+"use client";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/lib/context/AuthContext";
+import Link from "next/link";
+import { use } from "react";
 
-export default async function LessonPage({ params }) {
-  const { documentId } = params;
+export default function LessonPage({ params }) {
+  const { user } = useAuth();
+  const router = useRouter();
+  const { documentId } = use(params);
 
-  try {
-    // Fetch lesson data without video
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/lessons?filters[documentId][$eq]=${documentId}`,
-      { cache: "no-store" }
-    );
+  const [lesson, setLesson] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    if (!res.ok) throw new Error(`Fetch failed with status ${res.status}`);
+  useEffect(() => {
+    if (!user) router.push("/auth/login");
+  }, []);
 
-    const json = await res.json();
-    const lesson = json.data?.[0];
+  useEffect(() => {
+    async function fetchLesson() {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/lessons?filters[documentId][$eq]=${documentId}`
+        );
+        const json = await res.json();
+        setLesson(json.data?.[0]);
+      } catch (error) {
+        console.error("Error loading lesson:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
 
-    if (!lesson) return notFound();
+    if (user) fetchLesson();
+  }, []);
 
-    const { Name, overview } = lesson;
+  if (loading)
+    return <p className="p-10 text-center text-blue-600">Loading...</p>;
+  if (!lesson)
+    return <p className="p-10 text-center text-red-500">Lesson not found.</p>;
 
-    return (
-      <div className="max-w-6xl mx-auto py-10 px-4">
-        {/* YouTube-like layout */}
-        <div className="space-y-4">
-          {/* Title */}
-          <h1 className="text-3xl font-bold text-black">{Name}</h1>
+  const { Name, overview } = lesson;
 
-          {/* Video space (like YouTube, just leave empty for now) */}
-          <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg shadow-lg">
-            {/* Placeholder for the video */}
-            <p className="text-center text-gray-500 pt-10">
+  return (
+    <div className="max-w-7xl mx-auto py-10 px-4">
+      <div className="flex flex-col md:flex-row gap-8">
+        {/* Left Column: Video Player */}
+        <div className="flex-1">
+          <h1 className="text-3xl font-semibold text-blue-600 mb-4">{Name}</h1>
+          {/* Video Placeholder */}
+          <div className="relative w-full aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg shadow-lg mb-6">
+            <p className="absolute inset-0 flex items-center justify-center text-gray-500 text-lg">
               Video will go here
             </p>
           </div>
+        </div>
 
-          {/* Lesson Overview */}
-          <div className="text-stone-700 mt-4">
-            <div className="prose max-w-none">
-              <p>{overview}</p>
-            </div>
+        {/* Right Column: Details and Overview */}
+        <div className="flex-1">
+          <h2 className="text-xl font-semibold text-blue-600 mb-4">
+            Lesson Overview
+          </h2>
+          <div className="prose text-stone-700">
+            <p>{overview}</p>
+          </div>
+
+          {/* Back to Courses */}
+          <div className="mt-6">
+            <Link
+              href="/courses"
+              className="text-blue-600 hover:text-blue-800 font-semibold text-lg"
+            >
+              &larr; Back to Courses
+            </Link>
           </div>
         </div>
       </div>
-    );
-  } catch (error) {
-    console.error("LessonPage fetch error:", error);
-    return notFound();
-  }
+    </div>
+  );
 }

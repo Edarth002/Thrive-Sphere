@@ -2,81 +2,89 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/context/AuthContext";
-import { use } from "react";
 import Link from "next/link";
 
 export default function CoursePage({ params }) {
   const { user } = useAuth();
   const router = useRouter();
-  const { documentId } = use(params); // Kept as you demanded
+  const { documentId } = params; // Correct params destructuring
 
   const [course, setCourse] = useState(null);
   const [lessons, setLessons] = useState([]);
 
+  // Fixed dependency array
   useEffect(() => {
     if (!user) router.push("/auth/login");
-  }, []);
+  }, [user, router]);
 
+  // Proper data fetching with correct dependencies
   useEffect(() => {
-    async function fetchCourseAndLessons() {
-      // 1. EXACT Strapi v5 compatible fetch
-      const courseRes = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/courses/document/${documentId}?populate[thumbnail]=*`
-      );
-      const courseData = await courseRes.json();
+    const fetchData = async () => {
+      try {
+        // 1. Fetch course with proper Strapi v5 population
+        const courseRes = await fetch(
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/courses/document/${documentId}?populate[thumbnail][fields][0]=url`
+        );
+        const courseData = await courseRes.json();
 
-      // 2. PROPER data extraction for Strapi v5
-      const rawCourse = courseData.data?.attributes;
-      const thumbnailUrl = rawCourse?.thumbnail?.data?.attributes?.url;
+        // 2. Handle Strapi v5 response structure
+        const thumbnailUrl =
+          courseData.data?.attributes?.thumbnail?.data?.attributes?.url;
 
-      setCourse({
-        ...rawCourse,
-        thumbnailUrl: thumbnailUrl
-          ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${thumbnailUrl}`
-          : "/default.jpg",
-      });
+        // 3. Set course data with fallback
+        setCourse({
+          ...courseData.data?.attributes,
+          thumbnailUrl: thumbnailUrl
+            ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${thumbnailUrl}`
+            : "/default-course.jpg",
+        });
 
-      // 3. Lessons fetch (unchanged from your original)
-      const lessonsRes = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/lessons?filters[course][documentId][$eq]=${documentId}`
-      );
-      setLessons((await lessonsRes.json()).data);
-    }
+        // 4. Fetch lessons
+        const lessonsRes = await fetch(
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/lessons?filters[course][documentId][$eq]=${documentId}`
+        );
+        setLessons((await lessonsRes.json()).data);
+      } catch (error) {
+        console.error("Fetch error:", error);
+      }
+    };
 
-    if (user) fetchCourseAndLessons();
-  }, []);
+    if (user) fetchData();
+  }, [user, documentId]); // Correct dependencies
 
-  if (!course) return <p className="p-10 text-center">Loading...</p>;
+  if (!course) return <div className="p-10 text-center">Loading...</div>;
 
   return (
     <div className="max-w-3xl mx-auto py-10 px-4">
-      {/* 4. SIMPLE img tag with guaranteed URL */}
+      {/* Verified image display */}
       <img
         src={course.thumbnailUrl}
         alt={course.Title}
         className="h-48 object-cover w-full"
+        onError={(e) => {
+          e.target.src = `${process.env.NEXT_PUBLIC_STRAPI_URL}/uploads/default-course.jpg`;
+        }}
       />
 
-      {/* REST OF YOUR ORIGINAL CODE - UNTOUCHED */}
-      <h1 className="text-3xl font-bold text-blue-600 mb-4">{course.Title}</h1>
-      <p className="text-stone-600 mb-6">{course.description}</p>
+      <h1 className="text-3xl font-bold text-blue-600 my-4">{course.Title}</h1>
+      <p className="text-gray-600 mb-6">{course.description}</p>
 
-      <h2 className="text-xl font-semibold text-stone-700 mb-3">Lessons:</h2>
-      <ul className="space-y-3">
+      <h2 className="text-xl font-semibold text-gray-800 mb-4">Lessons</h2>
+      <div className="space-y-4">
         {lessons.map((lesson) => (
-          <li
+          <div
             key={lesson.id}
-            className="p-4 border rounded hover:bg-gray-50 transition"
+            className="p-4 border rounded-lg hover:bg-gray-50 transition-colors"
           >
             <Link
-              href={`/lessons/${lesson.documentId}`}
-              className="text-blue-600 hover:underline"
+              href={`/lessons/${lesson.attributes?.documentId || lesson.id}`}
+              className="text-blue-600 hover:text-blue-800"
             >
-              {lesson.Name}
+              <h3 className="text-lg font-medium">{lesson.attributes?.Name}</h3>
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

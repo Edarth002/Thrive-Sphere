@@ -8,47 +8,43 @@ import Link from "next/link";
 export default function CoursePage({ params }) {
   const { user } = useAuth();
   const router = useRouter();
-
   const { documentId } = use(params);
 
   const [course, setCourse] = useState(null);
   const [lessons, setLessons] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!user) router.push("/auth/login");
   }, []);
 
   useEffect(() => {
-    async function fetchCourseAndLessons() {
-      try {
-        const courseRes = await fetch(
-          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/courses/document/${documentId}`
-        );
-        const courseJson = await courseRes.json();
-        setCourse(courseJson.data);
+    async function fetchData() {
+      const courseRes = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/courses/document/${documentId}?populate=thumbnail`
+      );
+      const courseData = await courseRes.json();
+      setCourse(courseData.data);
 
-        const lessonsRes = await fetch(
-          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/lessons?filters[course][documentId][$eq]=${documentId}`
-        );
-        const lessonsJson = await lessonsRes.json();
-        setLessons(lessonsJson.data);
-      } catch (error) {
-        console.error("Error loading course or lessons:", error);
-      } finally {
-        setLoading(false);
-      }
+      const lessonsRes = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/lessons?filters[course][documentId][$eq]=${documentId}`
+      );
+      setLessons((await lessonsRes.json()).data);
     }
 
-    if (user) fetchCourseAndLessons();
+    if (user) fetchData();
   }, []);
 
-  if (loading) return <p className="p-10 text-center">Loading...</p>;
-  if (!course)
-    return <p className="p-10 text-center text-red-500">Course not found.</p>;
+  if (!course) return null;
 
   return (
     <div className="max-w-3xl mx-auto py-10 px-4">
+      {/* Dynamic image URL - using thumbnail.url */}
+      <img
+        src={`http://localhost:1337${course.thumbnail?.url}`}
+        alt={course.Title}
+        className="h-48 object-cover w-full"
+      />
+
       <h1 className="text-3xl font-bold text-blue-600 mb-4">{course.Title}</h1>
       <p className="text-stone-600 mb-6">{course.description}</p>
 

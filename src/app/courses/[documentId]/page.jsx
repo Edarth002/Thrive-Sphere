@@ -19,32 +19,51 @@ export default function CoursePage({ params }) {
 
   useEffect(() => {
     async function fetchData() {
-      const courseRes = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/courses/document/${documentId}?populate=thumbnail`
-      );
-      const courseData = await courseRes.json();
-      setCourse(courseData.data);
+      try {
+        // 1. Fetch course with proper Strapi v5 population
+        const courseRes = await fetch(
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/courses/document/${documentId}?populate[thumbnail][fields][0]=url`
+        );
+        const courseData = await courseRes.json();
 
-      const lessonsRes = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/lessons?filters[course][documentId][$eq]=${documentId}`
-      );
-      setLessons((await lessonsRes.json()).data);
+        // 2. Handle Strapi v5 nested response structure
+        const thumbnailUrl =
+          courseData.data?.attributes?.thumbnail?.data?.attributes?.url;
+
+        // 3. Create safe course object
+        setCourse({
+          ...courseData.data?.attributes,
+          id: courseData.data?.id,
+          thumbnailUrl: thumbnailUrl
+            ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${thumbnailUrl}`
+            : "/default-course.jpg",
+        });
+
+        // 4. Fetch lessons
+        const lessonsRes = await fetch(
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/lessons?filters[course][documentId][$eq]=${documentId}`
+        );
+        setLessons((await lessonsRes.json()).data);
+      } catch (error) {
+        console.error("Fetch error:", error);
+      }
     }
 
     if (user) fetchData();
   }, []);
 
-  if (!course) return null;
+  if (!course) return <div>Loading...</div>;
 
   return (
     <div className="max-w-3xl mx-auto py-10 px-4">
-      {/* Dynamic image URL - using thumbnail.url */}
       <img
-        src={`http://localhost:1337${course.thumbnail?.url}`}
+        src={course.thumbnailUrl}
         alt={course.Title}
         className="h-48 object-cover w-full"
+        onError={(e) => {
+          e.target.src = `${process.env.NEXT_PUBLIC_STRAPI_URL}/uploads/R_1edd47b086.jfif`;
+        }}
       />
-
       <h1 className="text-3xl font-bold text-blue-600 mb-4">{course.Title}</h1>
       <p className="text-stone-600 mb-6">{course.description}</p>
 

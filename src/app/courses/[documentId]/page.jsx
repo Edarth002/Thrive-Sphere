@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/context/AuthContext";
-import Link from "next/link";
 import { use } from "react";
+import Link from "next/link";
 
 export default function CoursePage({ params }) {
   const { user } = useAuth();
@@ -15,48 +15,45 @@ export default function CoursePage({ params }) {
 
   useEffect(() => {
     if (!user) router.push("/auth/login");
-  }, [user, router]);
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
-      try {
-        // 1. Fetch course with thumbnail populated
-        const courseRes = await fetch(
-          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/courses/document/${documentId}?populate=thumbnail`
-        );
-        const courseData = await courseRes.json();
+      // 1. First fetch basic course data
+      const courseRes = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/courses/document/${documentId}`
+      );
+      const courseData = await courseRes.json();
 
-        // 2. DIRECT access to thumbnail data (no attributes nesting)
-        const thumbnail = courseData.thumbnail || courseData.data?.thumbnail;
+      // 2. Then fetch thumbnail separately
+      const thumbnailRes = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/courses/${courseData.data.id}?populate=thumbnail`
+      );
+      const thumbnailData = await thumbnailRes.json();
 
-        // 3. Set image URL - using your confirmed working pattern
-        setCourse({
-          ...(courseData.data || courseData),
-          thumbnailUrl: thumbnail?.formats?.medium?.url
-            ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${thumbnail.formats.medium.url}`
-            : thumbnail?.url
-            ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${thumbnail.url}`
-            : "/default-course.jpg",
-        });
+      // 3. Combine the data
+      setCourse({
+        ...courseData.data,
+        thumbnailUrl: thumbnailData.data?.thumbnail?.url
+          ? `http://localhost:1337${thumbnailData.data.thumbnail.url}`
+          : "/default-course.jpg",
+      });
 
-        // 4. Fetch lessons
-        const lessonsRes = await fetch(
-          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/lessons?filters[course][documentId][$eq]=${documentId}&populate=thumbnail`
-        );
-        setLessons((await lessonsRes.json()).data);
-      } catch (error) {
-        console.error("Fetch error:", error);
-      }
+      // 4. Fetch lessons
+      const lessonsRes = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/lessons?filters[course][documentId][$eq]=${documentId}`
+      );
+      setLessons((await lessonsRes.json()).data);
     }
 
     if (user) fetchData();
-  }, [user, documentId]);
+  }, []);
 
   if (!course) return <div className="p-10 text-center">Loading...</div>;
 
   return (
     <div className="max-w-3xl mx-auto py-10 px-4">
-      {/* Course Image - using your working pattern */}
+      {/* Image display */}
       <img
         src={course.thumbnailUrl}
         alt={course.Title}

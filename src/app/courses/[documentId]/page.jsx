@@ -8,6 +8,7 @@ import Header from "@/app/components/header";
 import { ArrowRightIcon } from "lucide-react";
 import Testimonials from "@/app/components/testimonials";
 import Footer from "@/app/components/footer";
+import Image from "next/image";
 
 export default function CoursePage({ params }) {
   const { user } = useAuth();

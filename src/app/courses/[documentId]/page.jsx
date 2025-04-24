@@ -5,6 +5,9 @@ import { useAuth } from "@/lib/context/AuthContext";
 import { use } from "react";
 import Link from "next/link";
 import Header from "@/app/components/header";
+import { ArrowRightIcon } from "lucide-react";
+import Testimonials from "@/app/components/testimonials";
+import Footer from "@/app/components/footer";
 
 export default function CoursePage({ params }) {
   const { user } = useAuth();
@@ -49,7 +52,7 @@ export default function CoursePage({ params }) {
   if (!course) return <div className="p-10 text-center">Loading...</div>;
 
   return (
-    <div className="w-full h-full bg-blue-50">
+    <div className="w-full">
       <Header />
 
       <section className="bg-blue-900 text-white px-10 py-20 h-[60vh]">
@@ -71,36 +74,81 @@ export default function CoursePage({ params }) {
       <section className="p-10">
         <h3 className="text-blue-800 text-lg font-semibold">Modules</h3>
         <div className="bg-black w-full h-[1px] my-5"></div>
-        There are
+        <h4 className="font-semibold my-2">
+          There are {course.numberoflessons} modules in this course
+        </h4>
+        <p className="text-gray-800 tracking-wider">
+          Feel free to engage. Whether you are a beginner or looking to refresh
+          your memory on {course.Title}, the following modules have been
+          designed to fit just that.
+        </p>
       </section>
 
-      <div className="space-y-4 p-10">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">Lessons</h2>
-        {lessons.map((lesson) => (
-          <div
-            key={lesson.id}
-            className="p-4 border rounded-lg hover:bg-gray-50"
-          >
-            <Link
-              href={`/lessons/${lesson.documentId}`}
-              className="flex items-center gap-4"
-            >
-              {/* Lesson Thumbnail - same pattern as course */}
-              <img
-                src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${
-                  lesson.thumbnail?.formats?.url || lesson.thumbnail?.url
-                }`}
-                alt={lesson.Name}
-                className="w-24 h-16 object-cover rounded"
-              />
-              <div>
-                <h3 className="text-lg font-medium">{lesson.Name}</h3>
-                <p className="text-gray-600 text-sm">{lesson.overview}</p>
+      <div className="flex items-center justify-start">
+        <div className="p-5 rounded-xl border-[1px] mx-10 my-5 w-2/3">
+          {lessons.map((lesson) => (
+            <div key={lesson.id} className="p-4 border-b-[1px]0">
+              <div className="flex justify-between">
+                <div className="flex flex-col space-y-1 items-start">
+                  <h3 className="text-lg font-semibold">{lesson.Name}</h3>
+                  <p className="text-gray-600">{lesson.overview}</p>
+                </div>
+                <Link
+                  href={`/lessons/${lesson.documentId}`}
+                  className="flex items-center gap-4"
+                >
+                  <ArrowRightIcon />
+                </Link>
               </div>
-            </Link>
-          </div>
-        ))}
+            </div>
+          ))}
+        </div>
       </div>
+      <Testimonials />
+
+      <section className="flex items-center justify-between p-10">
+        <Image
+          src="/assets/courseera.png"
+          width={1000}
+          height={1000}
+          alt="Courseera icon"
+          className="w-40 object-cover"
+        />
+
+        <Image
+          src="/assets/udemy.png"
+          width={1000}
+          height={1000}
+          alt="Udemy icon"
+          className="w-40 object-cover"
+        />
+
+        <Image
+          src="/assets/edx.png"
+          width={1000}
+          height={1000}
+          alt="Edx icon"
+          className="w-20 object-cover"
+        />
+
+        <Image
+          src="/assets/linkedin.png"
+          width={1000}
+          height={1000}
+          alt="Linkedin icon"
+          className="w-20 object-cover"
+        />
+
+        <Image
+          src="/assets/skillshare.png"
+          width={1000}
+          height={1000}
+          alt="Skillshare icon"
+          className="w-40 object-cover"
+        />
+      </section>
+
+      <Footer />
     </div>
   );
 }

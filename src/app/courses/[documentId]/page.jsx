@@ -49,15 +49,32 @@ export default function CoursePage({ params }) {
   if (!course) return <div className="p-10 text-center">Loading...</div>;
 
   return (
-    <div className="w-full h-screen bg-blue-50">
+    <div className="w-full h-full bg-blue-50">
       <Header />
 
-      <section className="bg-blue-600 text-white px-10 py-20">
-        <h1 className="text-5xl font-bold my-6">{course.Title}</h1>
-        <p className="text-gray-100 mb-6 text-lg w-3/5">{course.description}</p>
+      <section className="bg-blue-900 text-white px-10 py-20 h-[60vh]">
+        <h1 className="text-6xl font-bold my-6 w-3/5">{course.Title}</h1>
+        <p className="text-gray-100 mb-6 text-sm">
+          Instructors: {course.tutor}
+        </p>
+        <button className="bg-yellow-500 p-3 rounded-md text-xs">
+          Enroll Now
+        </button>
       </section>
 
-      <div className="space-y-4 p-10`">
+      <section className="p-10">
+        <h3 className="text-blue-800 text-lg font-semibold">About</h3>
+        <div className="bg-black w-full h-[1px] my-5"></div>
+        <p className="text-gray-800 tracking-wider">{course.description}</p>
+      </section>
+
+      <section className="p-10">
+        <h3 className="text-blue-800 text-lg font-semibold">Modules</h3>
+        <div className="bg-black w-full h-[1px] my-5"></div>
+        There are
+      </section>
+
+      <div className="space-y-4 p-10">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">Lessons</h2>
         {lessons.map((lesson) => (
           <div

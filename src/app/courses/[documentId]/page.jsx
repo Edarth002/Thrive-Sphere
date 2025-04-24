@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/context/AuthContext";
 import { use } from "react";
 import Link from "next/link";
+import Header from "@/app/components/header";
 
 export default function CoursePage({ params }) {
   const { user } = useAuth();
@@ -19,19 +20,16 @@ export default function CoursePage({ params }) {
 
   useEffect(() => {
     async function fetchData() {
-      // 1. First fetch basic course data
       const courseRes = await fetch(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/courses/document/${documentId}`
       );
       const courseData = await courseRes.json();
 
-      // 2. Then fetch thumbnail separately
       const thumbnailRes = await fetch(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/courses/${courseData.data.id}?populate=thumbnail`
       );
       const thumbnailData = await thumbnailRes.json();
 
-      // 3. Combine the data
       setCourse({
         ...courseData.data,
         thumbnailUrl: thumbnailData.data?.thumbnail?.url
@@ -39,7 +37,6 @@ export default function CoursePage({ params }) {
           : "/default-course.jpg",
       });
 
-      // 4. Fetch lessons
       const lessonsRes = await fetch(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/lessons?filters[course][documentId][$eq]=${documentId}`
       );
@@ -52,19 +49,16 @@ export default function CoursePage({ params }) {
   if (!course) return <div className="p-10 text-center">Loading...</div>;
 
   return (
-    <div className="max-w-3xl mx-auto py-10 px-4">
-      {/* Image display */}
-      <img
-        src={course.thumbnailUrl}
-        alt={course.Title}
-        className="h-48 object-cover w-full"
-      />
+    <div className="w-full h-screen bg-blue-50">
+      <Header />
 
-      <h1 className="text-3xl font-bold text-blue-600 my-4">{course.Title}</h1>
-      <p className="text-gray-600 mb-6">{course.description}</p>
+      <section className="bg-blue-600 text-white px-10 py-20">
+        <h1 className="text-5xl font-bold my-6">{course.Title}</h1>
+        <p className="text-gray-100 mb-6 text-lg w-3/5">{course.description}</p>
+      </section>
 
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">Lessons</h2>
-      <div className="space-y-4">
+      <div className="space-y-4 p-10`">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">Lessons</h2>
         {lessons.map((lesson) => (
           <div
             key={lesson.id}
@@ -77,7 +71,7 @@ export default function CoursePage({ params }) {
               {/* Lesson Thumbnail - same pattern as course */}
               <img
                 src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${
-                  lesson.thumbnail?.formats?.small?.url || lesson.thumbnail?.url
+                  lesson.thumbnail?.formats?.url || lesson.thumbnail?.url
                 }`}
                 alt={lesson.Name}
                 className="w-24 h-16 object-cover rounded"

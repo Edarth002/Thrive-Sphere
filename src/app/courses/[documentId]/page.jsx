@@ -86,9 +86,9 @@ export default function CoursePage({ params }) {
       </section>
 
       <div className="flex items-center justify-start">
-        <div className="p-5 rounded-xl border-[1px] mx-10 my-5 w-2/3">
+        <div className="p-5 rounded-xl border-[1px] mx-10 my-5 w-full">
           {lessons.map((lesson) => (
-            <div key={lesson.id} className="p-4 border-b-[1px]0">
+            <div key={lesson.id} className="p-4 border-b-[1px]">
               <div className="flex justify-between">
                 <div className="flex flex-col space-y-1 items-start">
                   <h3 className="text-lg font-semibold">{lesson.Name}</h3>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "@/lib/context/AuthContext";
 import Image from "next/image";
+import Link from "next/link";
 
 export const HeroDashboard = () => {
   const { user } = useAuth();
@@ -12,9 +13,11 @@ export const HeroDashboard = () => {
           <p className="my-2">
             Education is like food to the brain, never stop learning
           </p>
-          <button className="bg-blue-500 border border-blue-400 shadow-xl shadow-blue-900 hover:bg-blue-600 duration-500 hover:shadow-sm rounded-md p-3 my-5">
-            Browse Courses
-          </button>
+          <Link href="/courses">
+            <button className="bg-blue-500 border border-blue-400 shadow-xl shadow-blue-900 hover:bg-blue-600 duration-500 hover:shadow-sm rounded-md p-3 my-5">
+              Browse Courses
+            </button>
+          </Link>
         </div>
         <div className="w-1/4 justify-end">
           <Image

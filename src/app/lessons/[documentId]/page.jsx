@@ -4,6 +4,9 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/context/AuthContext";
 import Link from "next/link";
 import { use } from "react";
+import Header from "@/app/components/header";
+import HeroBtn from "@/app/components/herobtn";
+import Footer from "@/app/components/footer";
 
 export default function LessonPage({ params }) {
   const { user } = useAuth();
@@ -43,39 +46,74 @@ export default function LessonPage({ params }) {
   const { Name, overview } = lesson;
 
   return (
-    <div className="max-w-7xl mx-auto py-10 px-4">
-      <div className="flex flex-col md:flex-row gap-8">
-        {/* Left Column: Video Player */}
-        <div className="flex-1">
-          <h1 className="text-3xl font-semibold text-blue-600 mb-4">{Name}</h1>
-          {/* Video Placeholder */}
-          <div className="relative w-full aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg shadow-lg mb-6">
-            <p className="absolute inset-0 flex items-center justify-center text-gray-500 text-lg">
-              Video will go here
-            </p>
-          </div>
-        </div>
+    <div>
+      <Header />
 
-        {/* Right Column: Details and Overview */}
-        <div className="flex-1">
-          <h2 className="text-xl font-semibold text-blue-600 mb-4">
-            Lesson Overview
-          </h2>
-          <div className="prose text-stone-700">
-            <p>{overview}</p>
-          </div>
+      <section className="p-10">
+        <h1 className="text-3xl mb-5">Module: {lesson.Name}</h1>
 
-          {/* Back to Courses */}
-          <div className="mt-6">
-            <Link
-              href="/courses"
-              className="text-blue-600 hover:text-blue-800 font-semibold text-lg"
-            >
-              &larr; Back to Courses
-            </Link>
-          </div>
+        <div>
+          <p className="text-white w-full text-left p-7 bg-blue-900 rounded-t-sm">
+            Video Transcript
+          </p>
+          <p className="bg-gray-200 text-black p-7 w-full rounded-b-sm">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam
+            atque nostrum quam reiciendis obcaecati quae laborum cum eveniet
+            qui? Praesentium iure qui voluptates quidem minima quia cum nostrum
+            voluptate assumenda.Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Quibusdam atque nostrum quam reiciendis obcaecati
+            quae laborum cum eveniet qui? Praesentium iure qui voluptates quidem
+            minima quia cum nostrum voluptate assumenda.Lorem ipsum dolor sit
+            amet consectetur, adipisicing elit. Quibusdam atque nostrum quam
+            reiciendis obcaecati quae laborum cum eveniet qui? Praesentium iure
+            qui voluptates quidem minima quia cum nostrum voluptate
+            assumenda.Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Quibusdam atque nostrum quam reiciendis obcaecati quae laborum cum
+            eveniet qui? Praesentium iure qui voluptates quidem minima quia cum
+            nostrum voluptate assumenda.Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Quibusdam atque nostrum quam reiciendis obcaecati
+            quae laborum cum eveniet qui? Praesentium iure qui voluptates quidem
+            minima quia cum nostrum voluptate assumenda.Lorem ipsum dolor sit
+            amet consectetur, adipisicing elit. Quibusdam atque nostrum quam
+            reiciendis obcaecati quae laborum cum eveniet qui? Praesentium iure
+            qui voluptates quidem minima quia cum nostrum voluptate
+            assumenda.Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Quibusdam atque nostrum quam reiciendis obcaecati quae laborum cum
+            eveniet qui? Praesentium iure qui voluptates quidem minima quia cum
+            nostrum voluptate assumenda.Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Quibusdam atque nostrum quam reiciendis obcaecati
+            quae laborum cum eveniet qui? Praesentium iure qui voluptates quidem
+            minima quia cum nostrum voluptate assumenda.Lorem ipsum dolor sit
+            amet consectetur, adipisicing elit. Quibusdam atque nostrum quam
+            reiciendis obcaecati quae laborum cum eveniet qui? Praesentium iure
+            qui voluptates quidem minima quia cum nostrum voluptate assumenda.
+          </p>
         </div>
+      </section>
+
+      <div className="p-10 mt-10">
+        <p className="underline">Taught by</p>
+        <p>placeholder tutor</p>
       </div>
+
+      <section className="bg-gray-200 p-10">
+        <p className="text-center font-bold text-xl">Any Questions?</p>
+        <p className="text-center my-4">
+          You can now ask your personal questions, send opinions or make
+          recommendations
+        </p>
+        <div>
+          <button className="bg-yellow-500 rounded-xl duration-500 hover:bg-yellow-600 px-8 py-3 text-white flex items-center mx-auto">
+            {user ? (
+              <Link href="/community">Send Mail</Link>
+            ) : (
+              <Link href="/auth/signup">Sign up</Link>
+            )}
+          </button>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }

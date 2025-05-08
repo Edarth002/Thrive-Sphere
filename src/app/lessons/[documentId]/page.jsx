@@ -1,17 +1,37 @@
 "use client";
+
+import { strapi } from "@strapi/client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/context/AuthContext";
 import Link from "next/link";
 import { use } from "react";
 import Header from "@/app/components/header";
-import HeroBtn from "@/app/components/herobtn";
+// import HeroBtn from "@/app/components/herobtn";
 import Footer from "@/app/components/footer";
 
-export default function LessonPage({ params }) {
+//Using strapi client to fetch video url filtering based on documentId
+
+const client = strapi({ baseURL: "http://localhost:1337/api" });
+
+const getLesson = async (identifier) => {
+  try {
+    const lesson = await client.collection("lessons").findOne(identifier, {
+      populate: ["videoUrl"],
+    });
+    return lesson;
+  } catch (error) {
+    console.error("Error fetching course: ", error);
+    return null;
+  }
+};
+
+export default async function LessonPage({ params }) {
   const { user } = useAuth();
   const router = useRouter();
   const { documentId } = use(params);
+
+  const lessonVid = await getLesson(documentId);
 
   const [lesson, setLesson] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -51,6 +71,13 @@ export default function LessonPage({ params }) {
 
       <section className="p-10">
         <h1 className="text-3xl mb-5">Module: {lesson.Name}</h1>
+
+        {/* Video url is found here */}
+        {lessonVid?.videoUrl ? (
+          <video src={lessonVid.videoUrl} controls />
+        ) : (
+          <p>Video not found</p>
+        )}
 
         <div>
           <p className="text-white w-full text-left p-7 bg-blue-900 rounded-t-sm">

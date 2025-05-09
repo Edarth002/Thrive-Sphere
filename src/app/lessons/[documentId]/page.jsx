@@ -26,12 +26,12 @@ const getLesson = async (identifier) => {
   }
 };
 
-export default async function LessonPage({ params }) {
+export default function LessonPage({ params }) {
   const { user } = useAuth();
   const router = useRouter();
   const { documentId } = use(params);
 
-  const lessonVid = await getLesson(documentId);
+  const lessonVid = getLesson(documentId);
 
   const [lesson, setLesson] = useState(null);
   const [loading, setLoading] = useState(true);

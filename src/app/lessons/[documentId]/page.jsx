@@ -1,12 +1,16 @@
 "use client";
+
+import { strapi } from "@strapi/client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/context/AuthContext";
 import Link from "next/link";
 import { use } from "react";
 import Header from "@/app/components/header";
-import HeroBtn from "@/app/components/herobtn";
+// import HeroBtn from "@/app/components/herobtn";
 import Footer from "@/app/components/footer";
+
+const client = strapi({ baseURL: "http://localhost:1337/api" });
 
 export default function LessonPage({ params }) {
   const { user } = useAuth();
@@ -15,6 +19,29 @@ export default function LessonPage({ params }) {
 
   const [lesson, setLesson] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  //Using strapi client to fetch video url filtering based on documentId
+  const [lessonVid, setLessonVid] = useState(null);
+
+  useEffect(() => {
+    const fetchLessonVid = async () => {
+      try {
+        const response = await client
+          .collection("lessons")
+          .findOne(documentId, {
+            populate: ["video"],
+          });
+        console.log("What the hell is wrong here:", response);
+        setLessonVid(response.data);
+      } catch (error) {
+        console.error("Error fetching course: ", error);
+      }
+    };
+
+    if (user && documentId) {
+      fetchLessonVid();
+    }
+  }, []);
 
   useEffect(() => {
     if (!user) router.push("/auth/login");
@@ -51,6 +78,17 @@ export default function LessonPage({ params }) {
 
       <section className="p-10">
         <h1 className="text-3xl mb-5">Module: {lesson.Name}</h1>
+
+        {/* Video url is found here */}
+        {lessonVid?.video?.url ? (
+          <video
+            src={`http://localhost:1337${lessonVid?.video?.url}`}
+            controls
+            className="w-full max-w-4xl"
+          />
+        ) : (
+          <p>Video not found</p>
+        )}
 
         <div>
           <p className="text-white w-full text-left p-7 bg-blue-900 rounded-t-sm">

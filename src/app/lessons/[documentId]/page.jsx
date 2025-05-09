@@ -10,31 +10,38 @@ import Header from "@/app/components/header";
 // import HeroBtn from "@/app/components/herobtn";
 import Footer from "@/app/components/footer";
 
-//Using strapi client to fetch video url filtering based on documentId
-
 const client = strapi({ baseURL: "http://localhost:1337/api" });
-
-const getLesson = async (identifier) => {
-  try {
-    const lesson = await client.collection("lessons").findOne(identifier, {
-      populate: ["videoUrl"],
-    });
-    return lesson;
-  } catch (error) {
-    console.error("Error fetching course: ", error);
-    return null;
-  }
-};
 
 export default function LessonPage({ params }) {
   const { user } = useAuth();
   const router = useRouter();
   const { documentId } = use(params);
 
-  const lessonVid = getLesson(documentId);
-
   const [lesson, setLesson] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  //Using strapi client to fetch video url filtering based on documentId
+  const [lessonVid, setLessonVid] = useState(null);
+
+  useEffect(() => {
+    const fetchLessonVid = async () => {
+      try {
+        const response = await client
+          .collection("lessons")
+          .findOne(documentId, {
+            populate: ["video"],
+          });
+        console.log("What the hell is wrong here:", response);
+        setLessonVid(response.data);
+      } catch (error) {
+        console.error("Error fetching course: ", error);
+      }
+    };
+
+    if (user && documentId) {
+      fetchLessonVid();
+    }
+  }, []);
 
   useEffect(() => {
     if (!user) router.push("/auth/login");
@@ -73,8 +80,12 @@ export default function LessonPage({ params }) {
         <h1 className="text-3xl mb-5">Module: {lesson.Name}</h1>
 
         {/* Video url is found here */}
-        {lessonVid?.videoUrl ? (
-          <video src={lessonVid.videoUrl} controls />
+        {lessonVid?.video?.url ? (
+          <video
+            src={`http://localhost:1337${lessonVid?.video?.url}`}
+            controls
+            className="w-full max-w-4xl"
+          />
         ) : (
           <p>Video not found</p>
         )}

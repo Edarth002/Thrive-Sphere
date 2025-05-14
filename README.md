@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+🌱 ThriveSphere
+ThriveSphere is a modern e-learning platform designed to help users grow their knowledge through structured courses, lessons, onboarding content, and community news updates. It provides a seamless learning experience built with Next.js (frontend) and Strapi (backend CMS).
 
-## Getting Started
+🚀 Live Site: https://thrivesphere.vercel.app
 
-First, run the development server:
+📦 Tech Stack
+Frontend: Next.js
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Backend: Strapi
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Authentication: JWT-based auth with protected routes
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Deployment:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Frontend: Vercel
 
-## Learn More
+Backend: Strapi PaaS or Self-hosted
 
-To learn more about Next.js, take a look at the following resources:
+Email Services: Nodemailer + Gmail SMTP (for registration & notifications)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🧑‍🎓 Features
+✅ User registration and login with email confirmation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+✅ Course listing with dynamic routing
 
-## Deploy on Vercel
+✅ Lesson pages accessible only to authenticated users
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+✅ Onboarding page for new users
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+✅ Handbook and News sections for internal updates
+
+✅ Fully responsive, modern UI

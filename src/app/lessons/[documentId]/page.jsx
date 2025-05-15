@@ -84,14 +84,14 @@ export default function LessonPage({ params }) {
           <video
             src={`http://localhost:1337${lessonVid?.video?.url}`}
             controls
-            className="w-full flex justify-center mx-auto"
+            className="w-full h-screen flex justify-center mx-auto"
           />
         ) : (
           <p>Video not found</p>
         )}
 
         <div>
-          <p className="text-white w-full text-left p-7 bg-blue-900 rounded-t-sm">
+          <p className="text-white w-full text-left p-7 bg-blue-900 rounded-t-sm mt-5">
             Video Transcript
           </p>
           {lesson.transcript ? (

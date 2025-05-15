@@ -84,7 +84,7 @@ export default function LessonPage({ params }) {
           <video
             src={`http://localhost:1337${lessonVid?.video?.url}`}
             controls
-            className="w-full max-w-4xl"
+            className="w-full flex justify-center mx-auto"
           />
         ) : (
           <p>Video not found</p>
@@ -94,38 +94,44 @@ export default function LessonPage({ params }) {
           <p className="text-white w-full text-left p-7 bg-blue-900 rounded-t-sm">
             Video Transcript
           </p>
-          <p className="bg-gray-200 text-black p-7 w-full rounded-b-sm">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam
-            atque nostrum quam reiciendis obcaecati quae laborum cum eveniet
-            qui? Praesentium iure qui voluptates quidem minima quia cum nostrum
-            voluptate assumenda.Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Quibusdam atque nostrum quam reiciendis obcaecati
-            quae laborum cum eveniet qui? Praesentium iure qui voluptates quidem
-            minima quia cum nostrum voluptate assumenda.Lorem ipsum dolor sit
-            amet consectetur, adipisicing elit. Quibusdam atque nostrum quam
-            reiciendis obcaecati quae laborum cum eveniet qui? Praesentium iure
-            qui voluptates quidem minima quia cum nostrum voluptate
-            assumenda.Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Quibusdam atque nostrum quam reiciendis obcaecati quae laborum cum
-            eveniet qui? Praesentium iure qui voluptates quidem minima quia cum
-            nostrum voluptate assumenda.Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Quibusdam atque nostrum quam reiciendis obcaecati
-            quae laborum cum eveniet qui? Praesentium iure qui voluptates quidem
-            minima quia cum nostrum voluptate assumenda.Lorem ipsum dolor sit
-            amet consectetur, adipisicing elit. Quibusdam atque nostrum quam
-            reiciendis obcaecati quae laborum cum eveniet qui? Praesentium iure
-            qui voluptates quidem minima quia cum nostrum voluptate
-            assumenda.Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Quibusdam atque nostrum quam reiciendis obcaecati quae laborum cum
-            eveniet qui? Praesentium iure qui voluptates quidem minima quia cum
-            nostrum voluptate assumenda.Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Quibusdam atque nostrum quam reiciendis obcaecati
-            quae laborum cum eveniet qui? Praesentium iure qui voluptates quidem
-            minima quia cum nostrum voluptate assumenda.Lorem ipsum dolor sit
-            amet consectetur, adipisicing elit. Quibusdam atque nostrum quam
-            reiciendis obcaecati quae laborum cum eveniet qui? Praesentium iure
-            qui voluptates quidem minima quia cum nostrum voluptate assumenda.
-          </p>
+          {lesson.transcript ? (
+            <p>{lesson.transcript}</p>
+          ) : (
+            <p className="bg-gray-200 text-black p-7 w-full rounded-b-sm">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Quibusdam atque nostrum quam reiciendis obcaecati quae laborum cum
+              eveniet qui? Praesentium iure qui voluptates quidem minima quia
+              cum nostrum voluptate assumenda.Lorem ipsum dolor sit amet
+              consectetur, adipisicing elit. Quibusdam atque nostrum quam
+              reiciendis obcaecati quae laborum cum eveniet qui? Praesentium
+              iure qui voluptates quidem minima quia cum nostrum voluptate
+              assumenda.Lorem ipsum dolor sit amet consectetur, adipisicing
+              elit. Quibusdam atque nostrum quam reiciendis obcaecati quae
+              laborum cum eveniet qui? Praesentium iure qui voluptates quidem
+              minima quia cum nostrum voluptate assumenda.Lorem ipsum dolor sit
+              amet consectetur, adipisicing elit. Quibusdam atque nostrum quam
+              reiciendis obcaecati quae laborum cum eveniet qui? Praesentium
+              iure qui voluptates quidem minima quia cum nostrum voluptate
+              assumenda.Lorem ipsum dolor sit amet consectetur, adipisicing
+              elit. Quibusdam atque nostrum quam reiciendis obcaecati quae
+              laborum cum eveniet qui? Praesentium iure qui voluptates quidem
+              minima quia cum nostrum voluptate assumenda.Lorem ipsum dolor sit
+              amet consectetur, adipisicing elit. Quibusdam atque nostrum quam
+              reiciendis obcaecati quae laborum cum eveniet qui? Praesentium
+              iure qui voluptates quidem minima quia cum nostrum voluptate
+              assumenda.Lorem ipsum dolor sit amet consectetur, adipisicing
+              elit. Quibusdam atque nostrum quam reiciendis obcaecati quae
+              laborum cum eveniet qui? Praesentium iure qui voluptates quidem
+              minima quia cum nostrum voluptate assumenda.Lorem ipsum dolor sit
+              amet consectetur, adipisicing elit. Quibusdam atque nostrum quam
+              reiciendis obcaecati quae laborum cum eveniet qui? Praesentium
+              iure qui voluptates quidem minima quia cum nostrum voluptate
+              assumenda.Lorem ipsum dolor sit amet consectetur, adipisicing
+              elit. Quibusdam atque nostrum quam reiciendis obcaecati quae
+              laborum cum eveniet qui? Praesentium iure qui voluptates quidem
+              minima quia cum nostrum voluptate assumenda.
+            </p>
+          )}
         </div>
       </section>
 

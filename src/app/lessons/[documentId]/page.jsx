@@ -9,6 +9,7 @@ import { use } from "react";
 import Header from "@/app/components/header";
 // import HeroBtn from "@/app/components/herobtn";
 import Footer from "@/app/components/footer";
+import GoogleTranslate from "../../components/googletranslate";
 
 const client = strapi({ baseURL: "http://localhost:1337/api" });
 
@@ -75,6 +76,7 @@ export default function LessonPage({ params }) {
   return (
     <div>
       <Header />
+      <GoogleTranslate />
 
       <section className="p-10">
         <h1 className="text-3xl mb-5">Module: {lesson.Name}</h1>
@@ -137,7 +139,7 @@ export default function LessonPage({ params }) {
 
       <div className="p-10 mt-10">
         <p className="underline">Taught by</p>
-        <p>placeholder tutor</p>
+        <p>{lesson.tutor}</p>
       </div>
 
       <section className="bg-gray-200 p-10">

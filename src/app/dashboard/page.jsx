@@ -7,7 +7,6 @@ import Header from "@/app/components/header";
 import HeroDashboard from "./hero";
 import SideBar from "./sidebar";
 import Inbox from "./inbox";
-import Activecourses from "./activecourses";
 
 export const Dashboard = () => {
   const router = useRouter();
@@ -22,13 +21,11 @@ export const Dashboard = () => {
   if (!user) return null;
 
   return (
-    <div className="full-page-bg">
+    <div className="">
       <Header className="fixed-header" />
       <SideBar />
       <Inbox />
       <HeroDashboard />
-      <Activecourses />
-      {/* {user && <UserProgress userId={user.id} />} */}
     </div>
   );
 };

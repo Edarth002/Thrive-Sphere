@@ -29,6 +29,14 @@ export const HeroDashboard = () => {
           />
         </div>
       </div>
+
+      <Image
+        src="/assets/community.jpg"
+        alt="Community Image"
+        width={1500}
+        height={1500}
+        className="shadow-lg rounded-lg shadow-stone-500 w-screen h-[41vh] object-cover mt-5"
+      />
     </div>
   );
 };

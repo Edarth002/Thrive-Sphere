@@ -13,7 +13,10 @@ export const UniqueCourses = () => {
   return (
     <div className="bg-white px-10 py-20">
       <h1 className="text-center text-stone-400 text-lg mb-2 uppercase">
-        10+ unique courses
+        10+ unique courses{" "}
+        <span className="font-normal bg-blue-700 text-white px-2 ml-1 text-sm py-1 rounded-xl">
+          Unreleased
+        </span>
       </h1>
       <p className="text-blue-600 text-3xl text-center font-bold my-2">
         You may also like more courses
@@ -71,7 +74,6 @@ export const UniqueCourses = () => {
                   />
                 </div>
               </div>
-              <p className="">#{uniquecourses.price}</p>
             </section>
 
             <div className="absolute bottom-0 flex items-center w-full left-0">

@@ -11,6 +11,25 @@ import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 import GoogleTranslate from "../../components/googletranslate";
 
+//Sending data to manage user progress
+async function trackLessonProgress({ userId, courseId, lessonId }) {
+  try {
+    await fetch("/api/track", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId,
+        courseId,
+        lessonId,
+      }),
+    });
+  } catch (error) {
+    console.error("Failed to track lesson progress:", error);
+  }
+}
+
 const client = strapi({ baseURL: "http://localhost:1337/api" });
 
 export default function LessonPage({ params }) {
@@ -23,6 +42,18 @@ export default function LessonPage({ params }) {
 
   //Using strapi client to fetch video url filtering based on documentId
   const [lessonVid, setLessonVid] = useState(null);
+
+  //Tracks user
+  useEffect(() => {
+    if (user && lesson && lesson.id) {
+      const courseId = lesson?.course?.id || null; // adjust if needed
+      trackLessonProgress({
+        userId: user.id,
+        courseId,
+        lessonId: lesson.id,
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const fetchLessonVid = async () => {
@@ -97,9 +128,9 @@ export default function LessonPage({ params }) {
             Video Transcript
           </p>
           {lesson.transcript ? (
-            <p>{lesson.transcript}</p>
+            <p className="p-7 w-full tracking-wider">{lesson.transcript}</p>
           ) : (
-            <p className="bg-gray-200 text-black p-7 w-full rounded-b-sm">
+            <p className="bg-gray-200 text-black p-7 w-full rounded-b-sm tracking-wider">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Quibusdam atque nostrum quam reiciendis obcaecati quae laborum cum
               eveniet qui? Praesentium iure qui voluptates quidem minima quia

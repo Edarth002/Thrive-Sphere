@@ -1,7 +1,7 @@
 "use client";
 
 import { sendEmail } from "@/lib/email";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export const SendEmail = () => {
   const [mail, setMail] = useState({
@@ -9,48 +9,63 @@ export const SendEmail = () => {
     to: "arthuronyeanusi@gmail.com",
     subject: "",
     message: "",
+    phone: "",
   });
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInput = (e) => {
     setMail((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setSuccess("");
+    setError("");
   };
 
   const handleEmail = async (e) => {
     e.preventDefault();
     setError("");
     setSuccess("");
+    setIsSubmitting(true);
 
     try {
       const response = await sendEmail({
         to: mail.to,
         subject: mail.subject,
-        message: mail.message,
+        message: `Message: ${mail.message}\nPhone: ${
+          mail.phone || "N/A"
+        }\nFrom: ${mail.from}`,
       });
 
-      setSuccess("Email sent Successfully");
-      setMail({ from: "", to: "", subject: "", message: "" });
+      setSuccess("Email sent successfully.");
+      setMail({
+        from: "",
+        to: "arthuronyeanusi@gmail.com",
+        subject: "",
+        message: "",
+        phone: "",
+      });
       return response;
     } catch (error) {
-      setError("Email not sent, contact thrivesphere@gmail.com");
+      setError("Email not sent, please contact thrivesphere@gmail.com");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="bg-blue-800 p-10 text-white w-full h-[70vh]">
-      <p>Get Started</p>
+    <div className="bg-blue-800 p-6 sm:p-10 text-white w-full min-h-[70vh] flex flex-col justify-center">
+      <p className="text-sm">Get Started</p>
 
-      <h1 className="text-4xl font-bold mt-5 mb-10">
+      <h1 className="text-3xl sm:text-4xl font-bold mt-2 mb-8 max-w-xl">
         Get in touch with us <br />
         We're here to assist you
       </h1>
 
-      <form onSubmit={handleEmail}>
-        <div className="flex items-center justify-center">
+      <form onSubmit={handleEmail} className="space-y-6 max-w-4xl mx-auto">
+        <div className="flex flex-col sm:flex-row gap-4">
           <input
             type="text"
-            className="border bg-transparent border-b-white border-t-0 border-r-0 border-l-0 placeholder-white text-sm border-dotted w-full p-2 mx-3 outline-none"
+            className="border-b border-white bg-transparent placeholder-white text-sm p-2 flex-1 outline-none"
             placeholder="Your Name"
             required
             name="subject"
@@ -59,7 +74,7 @@ export const SendEmail = () => {
           />
           <input
             type="email"
-            className="border bg-transparent border-b-white border-t-0 border-r-0 border-l-0 placeholder-white text-sm border-dotted w-full p-2 mx-3 outline-none"
+            className="border-b border-white bg-transparent placeholder-white text-sm p-2 flex-1 outline-none"
             placeholder="Email Address"
             required
             name="from"
@@ -67,31 +82,36 @@ export const SendEmail = () => {
             onChange={handleInput}
           />
           <input
-            type="text"
-            className="border bg-transparent border-b-white border-t-0 border-r-0 border-l-0 placeholder-white text-sm border-dotted w-full p-2 mx-3 outline-none"
-            placeholder="Phone Number(Optional)"
-          />
-        </div>
-        <div className="mx-3">
-          <input
-            type="text"
-            className="border bg-transparent border-b-white border-t-0 border-r-0 border-l-0 placeholder-white text-sm border-dotted w-full p-2 mx-auto my-10 outline-none"
-            name="message"
-            placeholder="Message"
-            value={mail.message}
+            type="tel"
+            className="border-b border-white bg-transparent placeholder-white text-sm p-2 flex-1 outline-none"
+            placeholder="Phone Number (Optional)"
+            name="phone"
+            value={mail.phone}
             onChange={handleInput}
           />
         </div>
 
+        <textarea
+          className="border-b border-white bg-transparent placeholder-white text-sm p-2 w-full resize-y outline-none min-h-[100px]"
+          name="message"
+          placeholder="Message"
+          required
+          value={mail.message}
+          onChange={handleInput}
+        />
+
         <button
           type="submit"
-          className="bg-yellow-500 rounded-xl duration-500 hover:bg-yellow-600 px-8 py-3 text-white text-sm"
+          disabled={isSubmitting}
+          className={`bg-yellow-500 rounded-xl px-8 py-3 text-white text-sm duration-500 hover:bg-yellow-600 disabled:opacity-50 disabled:cursor-not-allowed`}
         >
-          Leave us a message
+          {isSubmitting ? "Sending..." : "Leave us a message"}
         </button>
 
-        {success && <p className="text-green-500 mt-4">{success}</p>}
-        {error && <p className="text-red-500 mt-4">{error}</p>}
+        {success && (
+          <p className="text-green-400 mt-4 text-center">{success}</p>
+        )}
+        {error && <p className="text-red-400 mt-4 text-center">{error}</p>}
       </form>
     </div>
   );

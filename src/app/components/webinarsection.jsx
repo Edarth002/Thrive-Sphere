@@ -1,3 +1,4 @@
+"use client";
 // import React from "react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -10,6 +11,7 @@ export const Webinarsection = () => {
   const [date, setDate] = useState("");
   const [webinars, setWebinars] = useState([]);
   const [error, setError] = useState("");
+
   useEffect(() => {
     async function fetchWebinarsFunction() {
       setError("");
@@ -29,21 +31,22 @@ export const Webinarsection = () => {
   }, []);
 
   const handleOpenForm = (courseTitle, date) => {
-    setSubject(date);
     setSubject(courseTitle);
+    setDate(date);
     setShowForm(true);
   };
+
   return (
     <div className="bg-blue-50 p-10">
       <h1 className="text-center text-4xl uppercase font-bold text-blue-600 my-10">
         Upcoming webinars for you
       </h1>
       {error && <p className="text-xl p-10 text-red-400">{error}</p>}
-      <div className="flex items-center flex-wrap mx-auto justify-center">
+      <div className="flex flex-wrap mx-auto justify-center gap-4">
         {webinars.map((allwebinars) => (
           <div
             key={allwebinars.id}
-            className="border-stone-500 border p-5  rounded-sm relative h-[28rem] w-[calc(33.33%-1.25rem)] m-1"
+            className="border-stone-500 border p-5 rounded-sm relative h-[28rem] w-full sm:w-1/2 lg:w-1/3 m-1"
           >
             <img
               src={`http://localhost:1337${
@@ -70,8 +73,7 @@ export const Webinarsection = () => {
               onClick={() =>
                 handleOpenForm(allwebinars.Title, allwebinars.Date)
               }
-              className="bg-yellow-500 rounded-xl duration-500 hover:bg-yellow-600
-            px-8 py-3 text-white "
+              className="bg-yellow-500 rounded-xl duration-500 hover:bg-yellow-600 px-8 py-3 text-white"
             >
               Register
             </button>
@@ -88,4 +90,5 @@ export const Webinarsection = () => {
     </div>
   );
 };
+
 export default Webinarsection;

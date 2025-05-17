@@ -12,21 +12,25 @@ export const HomePage = () => {
     <div>
       <Header />
 
-      <div className="flex items-center w-full h-[60vh]">
-        <section className="p-28 justify-center w-1/2 text-white bg-blue-900 h-[60vh]">
-          <h1 className="text-4xl font-semibold">Thrive beyond limits</h1>
-          <p className="my-7 text-sm font-light">
+      <div className="flex flex-col md:flex-row items-center w-full h-[60vh]">
+        <section className="p-10 md:p-28 flex flex-col justify-center w-full md:w-1/2 text-white bg-blue-900 h-[60vh] text-center md:text-left">
+          <h1 className="text-3xl md:text-4xl font-semibold">
+            Thrive beyond limits
+          </h1>
+          <p className="my-5 md:my-7 text-sm font-light max-w-md mx-auto md:mx-0">
             Your potentials are limitless and we are here to help you achieve
             and realize those potentials towards self improvement and success.
           </p>
-          <HeroBtn />
+          <div className="flex justify-center md:justify-start">
+            <HeroBtn />
+          </div>
         </section>
         <Image
           src="/assets/hero.jpg"
           width={1000}
           height={1000}
           alt="hero Image"
-          className="w-1/2 object-cover h-[60vh]"
+          className="w-full md:w-1/2 object-cover h-[60vh]"
         />
       </div>
 
@@ -36,45 +40,45 @@ export const HomePage = () => {
 
       <Testimonials />
 
-      <section className="flex items-center justify-between p-10">
+      <section className="flex flex-wrap justify-center items-center gap-8 p-6 md:p-10">
         <Image
           src="/assets/courseera.png"
-          width={1000}
-          height={1000}
+          width={160}
+          height={160}
           alt="Courseera icon"
-          className="w-40 object-cover"
+          className="object-contain"
         />
 
         <Image
           src="/assets/udemy.png"
-          width={1000}
-          height={1000}
+          width={160}
+          height={160}
           alt="Udemy icon"
-          className="w-40 object-cover"
+          className="object-contain"
         />
 
         <Image
           src="/assets/edx.png"
-          width={1000}
-          height={1000}
+          width={80}
+          height={80}
           alt="Edx icon"
-          className="w-20 object-cover"
+          className="object-contain"
         />
 
         <Image
           src="/assets/linkedin.png"
-          width={1000}
-          height={1000}
+          width={80}
+          height={80}
           alt="Linkedin icon"
-          className="w-20 object-cover"
+          className="object-contain"
         />
 
         <Image
           src="/assets/skillshare.png"
-          width={1000}
-          height={1000}
+          width={160}
+          height={160}
           alt="Skillshare icon"
-          className="w-40 object-cover"
+          className="object-contain"
         />
       </section>
 

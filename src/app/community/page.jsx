@@ -113,15 +113,17 @@ const Community = () => {
             <ul className="text-stone-600 flex flex-col items-start space-y-2">
               <li>
                 {" "}
-                <Link href="/">Pricing Plans</Link>
+                <Link href="/payment">Pricing Plans</Link>
               </li>
               <li>
                 {" "}
-                <Link href="/">Payment Page</Link>
+                <Link href="/payment">Payment Page</Link>
               </li>
               <li>
-                {" "}
-                <Link href="/">Payment Status</Link>
+                Payment Status
+                <span className="font-normal bg-blue-700 text-white px-2 ml-1 text-sm py-1 rounded-xl">
+                  Beta
+                </span>
               </li>
             </ul>
           </div>

@@ -8,7 +8,6 @@ import HeroDashboard from "./hero";
 import SideBar from "./sidebar";
 import Inbox from "./inbox";
 import Activecourses from "./activecourses";
-import UserProgress from "./userprogress";
 
 export const Dashboard = () => {
   const router = useRouter();
@@ -29,7 +28,7 @@ export const Dashboard = () => {
       <Inbox />
       <HeroDashboard />
       <Activecourses />
-      {user && <UserProgress userId={user.id} />}
+      {/* {user && <UserProgress userId={user.id} />} */}
     </div>
   );
 };

@@ -1,3 +1,6 @@
+"use client";
+import { useState, useEffect } from "react";
+
 // components/UserProgress.js
 const UserProgress = ({ userId }) => {
   const [progressData, setProgressData] = useState([]);

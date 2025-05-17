@@ -15,11 +15,11 @@ export default function Onboarding() {
       title: "Explore Courses",
       description: "Browse through 20+ free and premium courses.",
     },
-    {
-      title: "Subcribe",
-      description:
-        "Subscribe to a premuim plan and have access to all our courses, get recommendations and updates",
-    },
+    // {
+    //   title: "Subcribe",
+    //   description:
+    //     "Subscribe to a premuim plan and have access to all our courses, get recommendations and updates",
+    // },
 
     {
       title: "Start Learning",
@@ -35,7 +35,7 @@ export default function Onboarding() {
   return (
     <div>
       <Header />
-      <div className="p-16 bg-blue-50 w-full h-screen">
+      <div className="p-16 bg-blue-50 w-full md:h-screen h-auto">
         <h1 className="text-blue-600 text-5xl font-bold mb-4 text-center">
           Welcome to Thrive-Sphere
         </h1>

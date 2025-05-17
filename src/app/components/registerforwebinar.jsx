@@ -59,15 +59,13 @@ const RegisterForWebinar = ({ subject, date, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded shadow-md w-96"
+        className="bg-white p-6 rounded shadow-md w-full max-w-md"
       >
-        <h2 className="font-bold mb-2">
-          Register for{" "}
-          <span className="text-lg font-bold text-blue-600">{subject}</span>{" "}
-          Webinar
+        <h2 className="font-bold mb-4 text-center text-xl md:text-2xl">
+          Register for <span className="text-blue-600">{subject}</span> Webinar
         </h2>
 
         {successMessage && (
@@ -89,7 +87,7 @@ const RegisterForWebinar = ({ subject, date, onClose }) => {
           value={formData.name}
           onChange={handleChange}
           required
-          className="border p-2 w-full mb-2"
+          className="border p-2 w-full mb-3 rounded"
         />
 
         <input
@@ -99,7 +97,7 @@ const RegisterForWebinar = ({ subject, date, onClose }) => {
           value={formData.email}
           onChange={handleChange}
           required
-          className="border p-2 w-full mb-4"
+          className="border p-2 w-full mb-5 rounded"
         />
 
         <div className="flex justify-between">
@@ -116,7 +114,7 @@ const RegisterForWebinar = ({ subject, date, onClose }) => {
             disabled={isSubmitting}
             className={`${
               isSubmitting ? "bg-blue-400" : "bg-blue-600"
-            } text-white px-4 py-2 rounded flex items-center justify-center`}
+            } text-white px-5 py-2 rounded flex items-center justify-center`}
           >
             {isSubmitting ? (
               <svg

@@ -1,6 +1,5 @@
 import Header from "@/app/components/header";
 import SendEmail from "@/app/components/sendemail";
-// import React from "react";
 import Image from "next/image";
 import Footer from "@/app/components/footer";
 import Link from "next/link";
@@ -15,10 +14,10 @@ const Community = () => {
         <h1 className="text-blue-700 text-3xl text-center font-bold py-2">
           What you will find in our community
         </h1>
-        <div className="flex items-center space-x-16 p-10">
-          <div className="flex flex-col space-y-2 w-1/2">
+        <div className="flex flex-col md:flex-row items-center md:space-x-16 space-y-10 md:space-y-0 p-10">
+          <div className="flex flex-col space-y-2 w-full md:w-1/2">
             <div>
-              <p className="bg-blue-900  text-white p-1 flex items-center justify-center mt-2 h-7 w-9 rounded-full">
+              <p className="bg-blue-900 text-white p-1 flex items-center justify-center mt-2 h-7 w-9 rounded-full">
                 01
               </p>
               <p className="text-black font-bold my-2">Discussion Forum</p>
@@ -28,7 +27,7 @@ const Community = () => {
               </p>
             </div>
             <div>
-              <p className="bg-blue-900  text-white p-1 flex items-center justify-center mt-2 h-7 w-9 rounded-full">
+              <p className="bg-blue-900 text-white p-1 flex items-center justify-center mt-2 h-7 w-9 rounded-full">
                 02
               </p>
               <p className="text-black font-bold my-2">
@@ -40,7 +39,7 @@ const Community = () => {
               </p>
             </div>
             <div>
-              <p className="bg-blue-900  text-white p-1 flex items-center justify-center mt-2 h-7 w-9 rounded-full">
+              <p className="bg-blue-900 text-white p-1 flex items-center justify-center mt-2 h-7 w-9 rounded-full">
                 03
               </p>
               <p className="text-black font-bold my-2">Resources sharing</p>
@@ -50,7 +49,7 @@ const Community = () => {
               </p>
             </div>
             <div>
-              <p className="bg-blue-900  text-white p-1 flex items-center justify-center mt-2 h-7 w-9 rounded-full">
+              <p className="bg-blue-900 text-white p-1 flex items-center justify-center mt-2 h-7 w-9 rounded-full">
                 04
               </p>
               <p className="text-black font-bold my-2">Peer support group</p>
@@ -65,16 +64,16 @@ const Community = () => {
             alt="Community Image"
             width={1500}
             height={1500}
-            className="shadow-lg rounded-lg shadow-stone-500 w-1/2"
+            className="shadow-lg rounded-lg shadow-stone-500 w-full md:w-1/2"
           />
         </div>
       </section>
 
       <section className="p-10 bg-stone-50">
-        <h1 className="text-blue-700 text-3xl text-left font-bold py-2 mb-3">
+        <h1 className="text-blue-700 text-3xl font-bold py-2 mb-3 text-center md:text-left">
           Need more HELP?
         </h1>
-        <div className="flex items-start justify-between mt-8">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between mt-8 space-y-10 md:space-y-0">
           <div>
             <h1 className="font-semibold pb-2">Account Management</h1>
             <ul className="text-stone-600 flex flex-col items-start space-y-2">
@@ -89,7 +88,9 @@ const Community = () => {
               </li>
             </ul>
           </div>
-          <div className="w-[0.05rem] h-40 bg-stone-300"></div>
+
+          <div className="hidden md:block w-[0.05rem] h-40 bg-stone-300"></div>
+
           <div>
             <h1 className="font-semibold pb-2">Information and Training</h1>
             <ul className="text-stone-600 flex flex-col items-start space-y-2">
@@ -107,16 +108,16 @@ const Community = () => {
               </li>
             </ul>
           </div>
-          <div className="w-[0.05rem] h-40 bg-stone-300"></div>
+
+          <div className="hidden md:block w-[0.05rem] h-40 bg-stone-300"></div>
+
           <div>
-            <h1 className="font-semibold  pb-2">Payment & Billing</h1>
+            <h1 className="font-semibold pb-2">Payment & Billing</h1>
             <ul className="text-stone-600 flex flex-col items-start space-y-2">
               <li>
-                {" "}
                 <Link href="/payment">Pricing Plans</Link>
               </li>
               <li>
-                {" "}
                 <Link href="/payment">Payment Page</Link>
               </li>
               <li>
@@ -127,10 +128,11 @@ const Community = () => {
               </li>
             </ul>
           </div>
-          <div className="w-[0.05rem] h-40 bg-stone-300"></div>
+
+          <div className="hidden md:block w-[0.05rem] h-40 bg-stone-300"></div>
+
           <div>
             <h1 className="font-semibold pb-2">
-              {" "}
               Certificates{" "}
               <span className="font-normal bg-blue-700 text-white px-2 ml-1 text-sm py-1 rounded-xl">
                 Beta
@@ -145,23 +147,25 @@ const Community = () => {
         </div>
       </section>
 
-      <section className="flex items-start justify-between bg-blue-50 px-10 py-20 mx-auto">
-        <div className="w-1/3">
+      <section className="flex flex-col md:flex-row items-start justify-between bg-blue-50 px-10 py-20 mx-auto space-y-10 md:space-y-0">
+        <div className="w-full md:w-1/3">
           <p className="text-stone-400">Contact info</p>
-          <h1 className="text-blue-700 text-3xl text-left font-bold py-2 mb-3">
+          <h1 className="text-blue-700 text-3xl font-bold py-2 mb-3">
             We are always happy to assist you
           </h1>
         </div>
-        <div className="w-[14%]">
+
+        <div className="w-full md:w-[14%]">
           <p>Email Address</p>
           <div className="bg-black w-10 h-[0.05rem]"></div>
           <p className="my-3">help@info.com</p>
-          <p className="text-stone-500 text-sm  leading-loose">
+          <p className="text-stone-500 text-sm leading-loose">
             Assistance hours:Monday-Friday <br />
             6am to 8pm
           </p>
         </div>
-        <div className="w-[14%]">
+
+        <div className="w-full md:w-[14%]">
           <p>Number</p>
           <div className="bg-black w-10 h-[0.05rem]"></div>
           <p className="my-3">07030459697</p>
@@ -171,6 +175,7 @@ const Community = () => {
           </p>
         </div>
       </section>
+
       <Footer />
     </div>
   );

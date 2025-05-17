@@ -17,22 +17,21 @@ const HomePage = () => {
       {/* Hero Section */}
       <ImageOverlay
         imgOverlay="/assets/about-us.png"
-        className="h-screen flex items-center justify-center text-white"
+        className="h-[90vh] flex flex-col items-center justify-center text-white px-4 md:px-0"
       >
-        <div className="text-center max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-bold">
+        <div className="text-center max-w-full md:max-w-4xl">
+          <h1 className="text-3xl md:text-5xl font-bold">
             Your gateway to knowledge
           </h1>
-          <p className="mt-4 text-lg leading-relaxed">
+          <p className="mt-4 text-base md:text-lg leading-relaxed">
             Learning has no boundaries. We believe learning should be
             accessible, flexible, and engaging. Explore our platform and unlock
-            your potentials today with Thrive Sphere and succeed.
+            your potential today with Thrive Sphere and succeed.
           </p>
-          {/* <button className="mt-6 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-8 py-3 rounded-xl gap-2">
-            Sign Up <span>➜</span>
-          </button> */}
 
-          <HeroBtn />
+          <div className="mt-6">
+            <HeroBtn />
+          </div>
         </div>
       </ImageOverlay>
 

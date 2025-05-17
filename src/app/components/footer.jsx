@@ -1,11 +1,11 @@
-// import React from "react";
 import Link from "next/link";
 
 export const Footer = () => {
   return (
-    <div className="bg-blue-800 pt-20 pb-40 px-20">
-      <section className="text-white flex items-center justify-between">
+    <div className="bg-blue-800 pt-20 pb-40 px-10 md:px-20">
+      <section className="text-white flex flex-col md:flex-row md:items-center md:justify-between space-y-10 md:space-y-0">
         <p className="text-2xl">Thrive sphere</p>
+
         <ul className="flex flex-col items-start space-y-5">
           <li>
             <Link href="/">Home</Link>
@@ -17,6 +17,7 @@ export const Footer = () => {
             <Link href="/about">About us</Link>
           </li>
         </ul>
+
         <ul className="flex flex-col items-start space-y-5">
           <li>
             <Link href="/community">Community</Link>
@@ -28,6 +29,7 @@ export const Footer = () => {
             <Link href="/community">Help</Link>
           </li>
         </ul>
+
         <ul className="flex flex-col items-start space-y-5">
           <li>
             <Link href="/community">Contact us</Link>
@@ -43,4 +45,5 @@ export const Footer = () => {
     </div>
   );
 };
+
 export default Footer;

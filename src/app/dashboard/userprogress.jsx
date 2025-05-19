@@ -1,7 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-// components/UserProgress.js
 const UserProgress = ({ userId }) => {
   const [progressData, setProgressData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -21,11 +20,11 @@ const UserProgress = ({ userId }) => {
     fetchProgress();
   }, [userId]);
 
-  if (loading) return <p>Loading progress...</p>;
-  if (!progressData.length) return <p>No progress found.</p>;
+  if (loading) return <p className="p-5">Loading progress...</p>;
+  if (!progressData.length) return <p className="p-5">No progress found.</p>;
 
   return (
-    <div className="p-5">
+    <div className="p-5 sm:ml-64">
       <h2 className="text-2xl font-bold mb-4">Your Lesson Progress</h2>
       {progressData.map((item) => (
         <div key={item.id} className="bg-white shadow rounded p-4 mb-3">

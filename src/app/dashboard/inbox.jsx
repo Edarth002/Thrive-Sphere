@@ -1,15 +1,15 @@
 import React from "react";
 import Image from "next/image";
 
-export const Inbox = () => {
+const Inbox = () => {
   return (
-    <div className="fixed bottom-3 w-60 h-54 rounded-2xl border border-gray-300 mx-2 mt-5 justify-end ">
+    <div className="fixed bottom-3 right-3 w-60 h-54 rounded-2xl border border-gray-300 bg-white shadow-lg p-2 hidden sm:block">
       <Image
         src="/assets/dashboard.png"
-        alt="Dashboard hero image"
+        alt="Dashboard inbox image"
         width={500}
         height={500}
-        className=""
+        className="w-full h-full object-contain"
       />
     </div>
   );

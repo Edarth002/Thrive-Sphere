@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import Header from "@/app/components/header";
 import HeroDashboard from "./hero";
 import SideBar from "./sidebar";
-import Inbox from "./inbox";
+// import Inbox from "./inbox";
 
 export const Dashboard = () => {
   const router = useRouter();
@@ -24,7 +24,7 @@ export const Dashboard = () => {
     <div className="">
       <Header className="fixed-header" />
       <SideBar />
-      <Inbox />
+      {/* <Inbox /> */}
       <HeroDashboard />
     </div>
   );

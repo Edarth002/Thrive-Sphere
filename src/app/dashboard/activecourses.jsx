@@ -2,89 +2,83 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import courses from "@/app/data/courses";
+import courses from "../data/courses";
 
-export const Activecourses = () => {
-  const [uniqueCourses, setuniqueCourses] = useState([]);
+const ActiveCourses = () => {
+  const [uniqueCourses, setUniqueCourses] = useState([]);
+
   useEffect(() => {
-    const Courses = courses.filter((course) => course.category === "unique");
-    setuniqueCourses(Courses);
+    setUniqueCourses(courses.filter((course) => course.category === "unique"));
   }, []);
+
   return (
-    <div className="ml-64">
-      <h1 className="text-center text-stone-800 text-lg mb-2 uppercase">
-        Active courses
+    <section className="px-4 py-10 sm:ml-64">
+      <h1 className="text-center text-stone-800 text-lg uppercase mb-5">
+        Active Courses
       </h1>
-      <div className="flex items-center mx-auto w-full justify-center my-5 bg-blue-50 pb-10 mb-0">
-        {uniqueCourses.map((uniquecourses) => (
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {uniqueCourses.map((course) => (
           <div
-            key={uniquecourses.id}
-            className="border-stone-300 border-2 p-5  rounded-sm relative h-[28rem] w-[calc(33.33%-1.25rem)] m-1"
+            key={course.id}
+            className="border border-stone-300 p-4 rounded-lg relative flex flex-col h-[28rem]"
           >
             <Image
-              src={uniquecourses.image}
-              alt={uniquecourses.name}
+              src={course.image}
+              alt={course.name}
               width={300}
               height={300}
-              className="h-48 object-cover w-full"
+              className="h-48 w-full object-cover rounded"
             />
-            <div className=" flex space-x-5 my-3">
-              <div className="flex space-x-3 items-center">
+            <div className="flex justify-between my-3 text-sm">
+              <div className="flex items-center gap-2">
                 <Image
                   src="/assets/user.png"
-                  alt="user icon"
-                  width={50}
-                  height={50}
-                  className="p-1 rounded-full bg-yellow-200 invert w-7 h-7"
+                  alt="User"
+                  width={20}
+                  height={20}
+                  className="invert bg-yellow-200 p-1 rounded-full"
                 />
-                <p className="">{`${uniquecourses.users} Learners`}</p>
+                <span>{course.users} Learners</span>
               </div>
-              <div className="flex space-x-3 items-center">
+              <div className="flex items-center gap-2">
                 <Image
                   src="/assets/clock.png"
-                  alt="clock icon"
-                  width={50}
-                  height={50}
-                  className="p-1 rounded-full bg-yellow-200 invert w-7 h-7"
+                  alt="Clock"
+                  width={20}
+                  height={20}
+                  className="invert bg-yellow-200 p-1 rounded-full"
                 />
-                <p className="">{uniquecourses.duration}</p>
+                <span>{course.duration}</span>
               </div>
             </div>
-            <h1 className="text-blue-600 text-xl my-5">{uniquecourses.name}</h1>
-            <section className="flex items-center justify-between">
-              <div>
-                <p>{uniquecourses.tutor}</p>
-                <div className="flex space-x-2 items-center">
-                  <p className="text-stone-400 my-1">{uniquecourses.rating}</p>
-                  <Image
-                    src="/assets/star.png"
-                    alt="Star icon"
-                    width={15}
-                    height={15}
-                  />
-                </div>
+            <h2 className="text-blue-600 text-lg font-semibold mt-auto mb-2">
+              {course.name}
+            </h2>
+            <div>
+              <p>{course.tutor}</p>
+              <div className="flex items-center gap-2 text-stone-500 text-sm">
+                <span>{course.rating}</span>
+                <Image
+                  src="/assets/star.png"
+                  alt="Star"
+                  width={15}
+                  height={15}
+                />
               </div>
-            </section>
-
-            <div className="absolute bottom-0 flex items-center w-full left-0">
-              <Link
-                href="/"
-                className="border p-1 text-stone-500 text-center w-1/2"
-              >
+            </div>
+            <div className="absolute bottom-0 left-0 w-full flex">
+              <Link href="/" className="w-1/2 text-center border-t p-2 text-sm">
                 View Course
               </Link>
-              <Link
-                href="/"
-                className="border p-1 text-stone-500 text-center w-1/2"
-              >
-                Start learning
+              <Link href="/" className="w-1/2 text-center border-t p-2 text-sm">
+                Start Learning
               </Link>
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Activecourses;
+export default ActiveCourses;

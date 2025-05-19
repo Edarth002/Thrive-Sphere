@@ -14,7 +14,7 @@ const Community = () => {
         <h1 className="text-blue-700 text-3xl text-center font-bold py-2">
           What you will find in our community
         </h1>
-        <div className="flex flex-col md:flex-row items-center md:space-x-16 space-y-10 md:space-y-0 p-10">
+        <div className="flex flex-col md:flex-row items-center md:space-x-16 space-y-10 md:space-y-0 md:p-10">
           <div className="flex flex-col space-y-2 w-full md:w-1/2">
             <div>
               <p className="bg-blue-900 text-white p-1 flex items-center justify-center mt-2 h-7 w-9 rounded-full">

@@ -11,7 +11,7 @@ const Community = () => {
       <SendEmail />
 
       <section className="px-10 py-20">
-        <h1 className="text-blue-700 text-3xl text-center font-bold py-2">
+        <h1 className="text-blue-700 text-3xl text-center font-bold py-2 md:pb-7">
           What you will find in our community
         </h1>
         <div className="flex flex-col md:flex-row items-center md:space-x-16 space-y-10 md:space-y-0 md:p-10">

@@ -53,66 +53,68 @@ export const SendEmail = () => {
   };
 
   return (
-    <div className="bg-blue-800 p-6 sm:p-10 text-white w-full min-h-[70vh] flex flex-col justify-center">
-      <p className="text-sm">Get Started</p>
+    <div className="bg-blue-800 px-4 sm:px-10 py-16 text-white w-full min-h-[70vh] flex flex-col items-center">
+      <div className="w-full">
+        <p className="text-sm">Get Started</p>
 
-      <h1 className="text-3xl sm:text-4xl font-bold mt-2 mb-8 max-w-xl">
-        Get in touch with us <br />
-        We're here to assist you
-      </h1>
+        <h1 className="text-3xl sm:text-4xl font-bold mt-2 mb-8">
+          Get in touch with us <br />
+          We're here to assist you
+        </h1>
 
-      <form onSubmit={handleEmail} className="space-y-6 max-w-4xl mx-auto">
-        <div className="flex flex-col sm:flex-row gap-4">
-          <input
-            type="text"
-            className="border-b border-white bg-transparent placeholder-white text-sm p-2 flex-1 outline-none"
-            placeholder="Your Name"
+        <form onSubmit={handleEmail} className="space-y-6">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <input
+              type="text"
+              className="border-b border-white bg-transparent placeholder-white text-sm p-2 flex-1 outline-none"
+              placeholder="Your Name"
+              required
+              name="subject"
+              value={mail.subject}
+              onChange={handleInput}
+            />
+            <input
+              type="email"
+              className="border-b border-white bg-transparent placeholder-white text-sm p-2 flex-1 outline-none"
+              placeholder="Email Address"
+              required
+              name="from"
+              value={mail.from}
+              onChange={handleInput}
+            />
+            <input
+              type="tel"
+              className="border-b border-white bg-transparent placeholder-white text-sm p-2 flex-1 outline-none"
+              placeholder="Phone Number (Optional)"
+              name="phone"
+              value={mail.phone}
+              onChange={handleInput}
+            />
+          </div>
+
+          <textarea
+            className="border-b border-white bg-transparent placeholder-white text-sm p-2 w-full resize-y outline-none min-h-[100px]"
+            name="message"
+            placeholder="Message"
             required
-            name="subject"
-            value={mail.subject}
+            value={mail.message}
             onChange={handleInput}
           />
-          <input
-            type="email"
-            className="border-b border-white bg-transparent placeholder-white text-sm p-2 flex-1 outline-none"
-            placeholder="Email Address"
-            required
-            name="from"
-            value={mail.from}
-            onChange={handleInput}
-          />
-          <input
-            type="tel"
-            className="border-b border-white bg-transparent placeholder-white text-sm p-2 flex-1 outline-none"
-            placeholder="Phone Number (Optional)"
-            name="phone"
-            value={mail.phone}
-            onChange={handleInput}
-          />
-        </div>
 
-        <textarea
-          className="border-b border-white bg-transparent placeholder-white text-sm p-2 w-full resize-y outline-none min-h-[100px]"
-          name="message"
-          placeholder="Message"
-          required
-          value={mail.message}
-          onChange={handleInput}
-        />
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="bg-yellow-500 rounded-xl px-8 py-3 text-white text-sm duration-500 hover:bg-yellow-600 disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
+          >
+            {isSubmitting ? "Sending..." : "Leave us a message"}
+          </button>
 
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className={`bg-yellow-500 rounded-xl px-8 py-3 text-white text-sm duration-500 hover:bg-yellow-600 disabled:opacity-50 disabled:cursor-not-allowed`}
-        >
-          {isSubmitting ? "Sending..." : "Leave us a message"}
-        </button>
-
-        {success && (
-          <p className="text-green-400 mt-4 text-center">{success}</p>
-        )}
-        {error && <p className="text-red-400 mt-4 text-center">{error}</p>}
-      </form>
+          {success && (
+            <p className="text-green-400 mt-4 text-center">{success}</p>
+          )}
+          {error && <p className="text-red-400 mt-4 text-center">{error}</p>}
+        </form>
+      </div>
     </div>
   );
 };

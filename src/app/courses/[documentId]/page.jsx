@@ -105,7 +105,7 @@ export default function CoursePage({ params }) {
           ))}
         </div>
       </div>
-      <Testimonials />
+      <Testimonials courseTitle = {course.Title} />
 
       <section className="flex items-center justify-between p-10">
         <Image
